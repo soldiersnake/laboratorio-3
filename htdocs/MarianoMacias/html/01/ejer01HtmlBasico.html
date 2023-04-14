@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+    <h1>Primer parrafo corto (incluye el retorno de carro)</h1>
+    <h2>Segundo Parrafo corto (incluye el retorno del carro)</h2>
+    <h3>Grupo de elementos de navegacion</h3>
+    <ul>
+        <li><a
+                href="https://espanol.yahoo.com/?p=us&guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAFNsSx1sqgI6qtfdp21GvlFYAW6zhiM5-4urMji8WEyyoZlPOYb-jbEzYaI7KNrzeeyHkfHN8QH8F-Bta-8E6DU3ff_Z0CPcwkmL3oQAM2p1wXX5fS42cAU8mliKWZVFVzT-qG5TwMRB0M3C2FCFE_N8zvOAG749rZx728_mNgw8">yahoo!</a>
+        </li>
+        <li><a href="https://www.google.es/">Google</a></li>
+        <li><a href="https://www.youtube.com/">Youtube</a></li>
+    </ul>
+    <hr>
+    <nav>
+        <a href="/html/01/otrohtml.html">Enlace a otra pagina dentro de la misma pestaña</a>
+        <a href="https://soldiersnake.github.io/MarianoMacias-CvWeb/" target="_blank">Enlace a otra pagina en nueva
+            pestaña</a>
+        <a href="#anclaje">Ancla a otro punto de esta pagina</a>
+    </nav>
+    <br>
+    <br>
+    <hr>
+    <main>
+        <h2>Cuerpo principal del contenido</h2>
+        <p>Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana
+            fritters fairy lights Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of
+            parchment. Head Boy start-of-term banquet Cleansweep Seven roaring lion hat. Unicorn blood crossbow mars is
+            bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot sing above the
+            ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.
+        </p>
+    </main>
+    <article>
+        <section>
+            <h3>Seccion de etiquetas semanticas estructurales</h3>
+            <ul>
+                <li>HEADER</li>
+                <li>FOOTER</li>
+                <li>SECTION</li>
+                <li>ARTICLE</li>
+                <li>NAV</li>
+                <li>ADDRESS</li>
+            </ul>
+            <p>Las etiquetas semanticas estructurales estan relacionadas directamente con el significado del contenido y
+                no
+                con los estilos ni las posiciones deltro del documento.</p>
+        </section>
+
+        <section>
+            <h3>Reglas para etiquetas semanticas:</h3>
+            <ul>
+                <li>Los distintos tipos de contenido se pueden asociar a las etiquetas SECTION</li>
+                <li>Las unidades de contenido se asocian a las etiquetas ARTICLE. O sea que un SECTION anida a multiples
+                    ARTICLES</li>
+                <li>Las etiqueta HEADER Y FOOTER pueder ser anidades dentro de otras HEADER O FOOTER. Osea un FOOTER
+                    podria anidar a otro HEADER Y FOOTER</li>
+                <li>La etiqueta NAV debe ser la unica en el documento y corresponde a los elementos de navegacion del
+                    documento</li>
+                <li>Reservar etiqueta h1 para usar dentro de etoquetas top level como main, header o footer</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Section de imagenes</h3>
+            <p>En esta seccion mostraremos imagenes identificativas de nuestro sitio</p>
+            <p>La siguiente imagen esta insertada en tamaño natural</p>
+            <img src="/html/01/HarryPotter.jpg" alt="Harry Potter">
+            <p>La misma imagen, harry potter, con dinstintos atributos de width</p>
+            <img src="/html/01/HarryPotter.jpg" alt="Harry Potter" width="50" height="50">
+            <img src="/html/01/HarryPotter.jpg" alt="Harry Potter" width="100" height="100">
+            <img src="/html/01/HarryPotter.jpg" alt="Harry Potter" width="250" height="150">
+            <img src="/html/01/HarryPotter.jpg" alt="Harry Potter" width="500" height="350">
+
+
+        </section>
+<br>
+<hr>
+        <section>
+            <h3>Seccion video</h3>
+            <video width="500" height="280" controls autoplay muted>
+                <source
+                    src="/html/01/(183) Harry Potter Max Original Series _ Official Announcement _ Max - YouTube - Google Chrome 2023-04-14 00-37-05.mp4"
+                    type="video/mp4">
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </section>
+
+        <section>
+            <h3>Anclajes</h3>
+            <p id="anclaje">Punto de anclaje</p>
+        </section>
+    </article>
+
+    <footer>
+        <h2>Datos del alumno</h2>
+        <p>Mariano D. Macias Gandulfo</p>
+        <a
+            href="mailto:mariano.maciasgandulfo@gmail.com?subject=Asunto del correo electrónico">mariano.maciasgandulfo@gmail.com</a>
+    </footer>
+</body>
+
+</html>
