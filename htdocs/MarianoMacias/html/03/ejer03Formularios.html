@@ -1,136 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ej 03 - Formularios</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <h2>Formulario para entradas sin validacion</h2>
-    <form action="">
-        <ul>
-            <label for="apellido">
-                <li>Apellido:</li>
-            </label>
-            <input type="text" autofocus>
-            <label for="contrasenia">
-                <li>Contraseña:</li>
-            </label>
-            <input type="password">
-            <label for="oculto">
-                <li>Oculto:</li>
-            </label>
-            <input type="hidden" name="nombre-input" value="valor-input">
-            <label for="campoDes">
-                <li>Campo deshabilitado:</li>
-            </label>
-            <input type="text" placeholder="Deshabilitado" disabled>
-            <label for="lectura">
-                <li>Campo de solo lectura:</li>
-            </label>
-            <input type="text" placeholder="Solo lectura" readonly>
-            <label for="deporte">
-                <li>Practica deportes:</li>
-            </label>
-            <input type="checkbox">
-            <label for="musical">
-                <li>Practica musical:</li>
-            </label>
-            <input type="checkbox">
-            <label for="pintura">
-                <li>Practica de pintura artistica:</li>
-            </label>
-            <input type="checkbox">
-            <label for="lectura">
-                <li>Sexo:</li>
-            </label>
-            <label>Masculino</label>
-            <input type="radio" name="sexo">
-            <label>Femenino</label>
-            <input type="radio" name="sexo">
-            <label for="lectura">
-                <li>Estudios cursados:</li>
-            </label>
-            <select name="estudios" id="estudios">
-                <option value="primario">Primario</option>
-                <option value="secundario">Secundario</option>
-                <option value="terciario">Terciario</option>
-                <option value="universitario">Universitario</option>
-                <option value="postgrado">Postgrado</option>
+    <form action="" method="get">
+      <ul>
+        <label for="apellido">
+          <li>Apellido:</li>
+        </label>
+        <input type="text" id="apellido" name="apellido" autofocus />
 
-            </select>
-            <label for="lectura">
-                <li>Fecha y Hora:</li>
-            </label>
-            <input type="datetime-local">
-            <label for="lectura">
-                <li>Color:</li>
-            </label>
-            <input type="color">
-            <br>
-            <br>
-            <div>
-                <label for="enviarSinValidacion">
-                    <li><button>Enviar Formulario sin validacion</button></li>
-                </label>
-            </div>
-            <div>
-                <br>
-                <label for="reset1">
-                    <li><button type="reset">Reset a valores predeterminados</button></li>
-                </label>
-            </div>
-        </ul>
+        <label for="password">
+          <li>Contraseña:</li>
+        </label>
+        <input type="password" id="password" name="password"/>
+
+        <label for="oculto">
+          <li>Oculto:</li>
+        </label>
+        <input type="hidden" name="nombre-input" value="valor-input" />
+
+        <label for="campoDes">
+          <li>Campo deshabilitado:</li>
+        </label>
+        <input type="text" placeholder="Deshabilitado" id="campoDes" name="campoDes" disabled />
+
+        <label for="lectura">
+          <li>Campo de solo lectura:</li>
+        </label>
+        <input type="text" placeholder="Solo lectura" id="lectura" name="lectura" readonly />
+
+        <label for="deporte">
+          <li>Practica deportes:</li>
+        </label>
+        <input type="checkbox" id="deporte" name="deporte"/>
+
+        <label for="musical">
+          <li>Practica musical:</li>
+        </label>
+        <input type="checkbox" id="musical" name="musical"/>
+
+        <label for="pintura">
+          <li>Practica de pintura artistica:</li>
+        </label>
+        <input type="checkbox" id="pintura" name="pintura"/>
+
+        <label for="lectura">
+          <li>Sexo:</li>
+        </label>
+        <label>Masculino</label>
+        <input type="radio" name="sexo" />
+
+        <label>Femenino</label>
+        <input type="radio" name="sexo" />
+
+        <label for="lectura">
+          <li>Estudios cursados:</li>
+        </label>
+        <select name="estudios" id="estudios">
+          <option value="primario">Primario</option>
+          <option value="secundario">Secundario</option>
+          <option value="terciario">Terciario</option>
+          <option value="universitario">Universitario</option>
+          <option value="postgrado">Postgrado</option>
+        </select>
+
+        <label for="lectura">
+          <li>Fecha y Hora:</li>
+        </label>
+        <input type="datetime-local" />
+
+        <label for="lectura">
+          <li>Color:</li>
+        </label>
+        <input type="color" />
+
+        <br />
+        <br />
+        <div>
+          <label for="enviarSinValidacion">
+            <li><button>Enviar Formulario sin validacion</button></li>
+          </label>
+        </div>
+        <div>
+          <br />
+          <label for="reset1">
+            <li>
+              <button type="reset">Reset a valores predeterminados</button>
+            </li>
+          </label>
+        </div>
+      </ul>
     </form>
+
     <h2>Formulario para entradas con validacion</h2>
-    <form action="">
-        <ul>
-            <label for="coment">
-                <li>Comentario (validacion por requirido):</li>
-            </label>
-            <input type="text" required>
-            <label for="email">
-                <li>Email con doble validacion (x@x y required):</li>
-            </label>
-            <input type="email" placeholder="text@mail.com" required >
-            <label for="numEnteroLimit">
-                <li>Numero entero limitado (validacion por tipo numerico y cotas):</li>
-            </label>
-            <input type="number" required>
-            <label for="numEnteroDecimal">
-                <li>Numero decimal:</li>
-            </label>
-            <input type="number" required>
-            <label for="url">
-                <li>URL (validacion por requerido, escribir http://):</li>
-            </label>
-            <input type="url" placeholder="http://xxx" required>
-            <label for="pattern">
-                <li>Pattern de validacion:</li>
-            </label>
-            <input type="text" pattern="[0-9]+" required>
-            <label for="pattern2">
-                <li>Pattern de validacion:</li>
-            </label>
-            <input type="text" placeholder="(+54) 11 22223333" required>
-            <br>
-            <br>
-            <div>
-                <label for="EnviarConValidacion">
-                    <li><button>Enviar Formulario con validacion</button></li>
-                </label>
-            </div>
-            <div>
-                <br>
-                <label for="reset2">
-                    <li><button type="reset">Reset a valores predeterminados</button></li>
-                </label>
-            </div>
-        </ul>
+    <form action="" method="get">
+      <ul>
+        <label for="coment">
+          <li>Comentario (validacion por requirido):</li>
+        </label>
+        <input type="text" required />
+        <label for="email">
+          <li>Email con doble validacion (x@x y required):</li>
+        </label>
+        <input type="email" placeholder="text@mail.com" required />
+        <label for="numEnteroLimit">
+          <li>
+            Numero entero limitado (validacion por tipo numerico y cotas):
+          </li>
+        </label>
+        <input type="number" required />
+        <label for="numEnteroDecimal">
+          <li>Numero decimal:</li>
+        </label>
+        <input type="number" required />
+        <label for="url">
+          <li>URL (validacion por requerido, escribir http://):</li>
+        </label>
+        <input type="url" placeholder="http://xxx" required />
+        <label for="pattern">
+          <li>Pattern de validacion:</li>
+        </label>
+        <input type="text" pattern="[0-9]+" required />
+        <label for="pattern2">
+          <li>Pattern de validacion:</li>
+        </label>
+        <input type="text" placeholder="(+54) 11 22223333" required />
+        <br />
+        <br />
+        <div>
+          <label for="EnviarConValidacion">
+            <li><button>Enviar Formulario con validacion</button></li>
+          </label>
+        </div>
+        <div>
+          <br />
+          <label for="reset2">
+            <li>
+              <button type="reset">Reset a valores predeterminados</button>
+            </li>
+          </label>
+        </div>
+      </ul>
     </form>
-
-</body>
+  </body>
 </html>
