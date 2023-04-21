@@ -9,7 +9,7 @@
 
   <body>
     <h2>Formulario para entradas sin validacion</h2>
-    <form action="" method="get">
+    <form action="formCargado.html" method="get">
       <ul>
         <label for="apellido">
           <li>Apellido:</li>
@@ -39,32 +39,32 @@
         <label for="deporte">
           <li>Practica deportes:</li>
         </label>
-        <input type="checkbox" id="deporte" name="deporte"/>
+        <input type="checkbox" id="deporte" name="deporte" value="si"/>
 
         <label for="musical">
           <li>Practica musical:</li>
         </label>
-        <input type="checkbox" id="musical" name="musical"/>
+        <input type="checkbox" id="musical" name="musical" value="si"/>
 
         <label for="pintura">
           <li>Practica de pintura artistica:</li>
         </label>
-        <input type="checkbox" id="pintura" name="pintura"/>
+        <input type="checkbox" id="pintura" name="pintura" value="si"/>
 
         <label for="lectura">
           <li>Sexo:</li>
         </label>
         <label>Masculino</label>
-        <input type="radio" name="sexo" />
+        <input type="radio" name="sexo" value="M"/>
 
         <label>Femenino</label>
-        <input type="radio" name="sexo" />
+        <input type="radio" name="sexo" value="F"/>
 
         <label for="lectura">
           <li>Estudios cursados:</li>
         </label>
         <select name="estudios" id="estudios">
-          <option value="primario">Primario</option>
+          <option value="primario" selected>Primario</option>
           <option value="secundario">Secundario</option>
           <option value="terciario">Terciario</option>
           <option value="universitario">Universitario</option>
@@ -100,38 +100,38 @@
     </form>
 
     <h2>Formulario para entradas con validacion</h2>
-    <form action="" method="get">
+    <form action="formCargado.html" method="get">
       <ul>
         <label for="coment">
           <li>Comentario (validacion por requirido):</li>
         </label>
-        <input type="text" required />
+        <input type="text" name="coment" required />
         <label for="email">
           <li>Email con doble validacion (x@x y required):</li>
         </label>
-        <input type="email" placeholder="text@mail.com" required />
+        <input type="email" placeholder="text@mail.com" name="email" required />
         <label for="numEnteroLimit">
           <li>
             Numero entero limitado (validacion por tipo numerico y cotas):
           </li>
         </label>
-        <input type="number" required />
+        <input type="number" name="numEnteroLimit" required />
         <label for="numEnteroDecimal">
           <li>Numero decimal:</li>
         </label>
-        <input type="number" required />
+        <input type="number" step="0.1" name="numEnteroDecimal" required />
         <label for="url">
           <li>URL (validacion por requerido, escribir http://):</li>
         </label>
-        <input type="url" placeholder="http://xxx" required />
+        <input type="url" placeholder="http://xxx" name="url" required />
         <label for="pattern">
           <li>Pattern de validacion:</li>
         </label>
-        <input type="text" pattern="[0-9]+" required />
+        <input type="text" pattern="[a-z]{3}[1-3]{2}" title="3 letras y dos numeros que sean 1,2 o 3" name="pattern" required />
         <label for="pattern2">
           <li>Pattern de validacion:</li>
         </label>
-        <input type="text" placeholder="(+54) 11 22223333" required />
+        <input type="text" pattern="^\(\+54\)\s\d{2}\s\d{8}$" placeholder="(+54) 11 22223333" title="recuerde que el formato debe de ser (+54) 11 11111111" name="pattern2" required />
         <br />
         <br />
         <div>
