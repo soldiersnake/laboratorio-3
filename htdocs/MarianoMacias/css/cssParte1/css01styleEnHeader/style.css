@@ -1,6 +1,7 @@
 *{
     /* margin: 0%; */
     box-sizing: border-box;
+    font-size: 32px;
 }
 h1{
     text-align: center;
@@ -9,8 +10,9 @@ h1{
 }
 p{
     text-align: left;
+    font-size: 0.5em;
     color: blue;
     font-style: italic;
-    border-top: blue solid;
-    border-bottom: blue solid;
+    border-top: blue solid 1px;
+    border-bottom: blue solid 1px;
 }
