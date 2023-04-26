@@ -12,13 +12,26 @@ p {
   background-color: aqua;
 }
 @media(min-width: 800px) and (max-width: 1080px) {
+  h1{
+    font-size: 4em;
+    font-size: 2em;
+    background-color: blanchedalmond;
+  }
   p {
     font-size: 2em;
+    background-color: blanchedalmond;
   }
 }
 
 @media(max-width: 800px) {
+  h1{
+    font-size: 6em;
+    background-color: black;
+    color: yellow;
+  }
   p {
     font-size: 3rem;
+    background-color: black;
+    color: yellow;
   }
 }
