@@ -1,0 +1,13 @@
+*{
+    /* margin: 0%; */
+    box-sizing: border-box;
+    font-size: 32px;
+}
+h1{
+    background-color: aqua;
+    text-align: center;
+}
+p{
+    background-color: aqua;
+    font-size: 0.5rem;
+}
