@@ -1,13 +1,24 @@
-*{
-    /* margin: 0%; */
-    box-sizing: border-box;
-    font-size: 32px;
+* {
+  /* margin: 0%; */
+  box-sizing: border-box;
+  font-size: 32px;
 }
-h1{
-    background-color: aqua;
-    text-align: center;
+h1 {
+  background-color: aqua;
+  text-align: center;
+  font-size: 2em;
 }
-p{
-    background-color: aqua;
-    font-size: 0.5rem;
+p {
+  background-color: aqua;
+}
+@media(min-width: 800px) and (max-width: 1080px) {
+  p {
+    font-size: 2em;
+  }
+}
+
+@media(max-width: 800px) {
+  p {
+    font-size: 3rem;
+  }
 }
