@@ -1,0 +1,31 @@
+*{
+    box-sizing: border-box;
+    font-size: 32px;
+    /* margin: 0%; */
+}
+h1{
+    font-size: 1.7em;
+    text-align: center;
+}
+.principal{
+    margin: auto;
+    margin-bottom: 5%;
+    width: 50%;
+    height: 50%;
+    background-color: rgb(220, 169, 169);
+    padding: 3%;
+    border: 3px solid yellow;
+    border-radius: 2%;
+}
+#cajaConImagenDefondo{
+    background-image: url('/html/01/HarryPotter.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    max-width: 70%;
+    margin: 3%;
+    height: 200px;
+    overflow: auto;
+    border: 2px solid blue;
+    border-radius: 1%;
+}
