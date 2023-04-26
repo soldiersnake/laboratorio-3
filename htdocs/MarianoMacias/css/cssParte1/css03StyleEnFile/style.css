@@ -1,0 +1,24 @@
+*{
+    margin: 0%;
+    box-sizing: border-box;
+    font-size: 32px;
+}
+h1{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    text-align: center;
+    background-color: grey;
+    display: block;
+}
+h2{
+    margin-bottom: 2%;
+    text-align: center;
+    background-color: grey;
+    display: block;
+}
+.claseAyuda{
+    color: blue;
+    border: solid 1px blue;
+    font-style: italic;
+    margin-bottom: 2%;
+}
