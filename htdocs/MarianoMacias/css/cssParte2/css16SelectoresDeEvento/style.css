@@ -19,7 +19,7 @@ html, body{
 .container{
     background-color: grey;
     width: 90%;
-    height: 100%;
+    height: 150%;
     margin: auto;
 }
 .botones{
@@ -48,6 +48,12 @@ html, body{
 }
 .fomulario input{
     width: 20%;
+    display: block;
+}
+.fomulario input:focus{
+    background-color: rgb(181, 181, 157);
+    border: 3px solid black;
+    border-radius: 15px;
 }
 h2{
     margin-top: 2%;
@@ -57,6 +63,10 @@ h2{
     margin: 0%;
     float: left;
     border: 1px solid black;
+}
+.imagenes img:active{
+    max-width: 50%;
+    transition: 1s;
 }
 .clear{
     clear: both;
