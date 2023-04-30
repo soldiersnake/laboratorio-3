@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 36px;
+}
+body{
+    width: 100%;
+    height: 100%;
+}
+img{
+    max-width: 100%;
+    max-height: 100%;
+    margin: 1%;
+}
+p{
+    font-size: 0.75em;
+}
+.container{
+    background-color: grey;
+    margin: auto;
+    margin-left: 5%;
+    width: 90%;
+    height: auto;
+    float: left;
+    padding-bottom: 1%;
+}
+.caja{
+    background-color: white;
+    border-radius: 10px;
+    width: 180px;
+    height: 100px;
+    float: left;
+    margin: 1% 1%;
+    box-shadow: 16px 8px 2px rgb(0, 0, 0, 0.3);
+}
+#caja1{
+    background: linear-gradient(180deg, yellow, white, orange);
+
+}
+#caja2{
+    background: radial-gradient(white, yellow);
+
+}
+#caja3{
+    text-align: center;
+
+}
+#caja3 img{
+    margin: auto;
+    text-align: center;
+
+}
+#caja4{
+    text-align: center;
+    background: radial-gradient(blue, yellow);
+}
+#caja4 img{
+    margin: auto;
+    text-align: center;
+    max-width: 55%;
+}
+#caja5{
+    background: linear-gradient(180deg, yellow, white, orange);
+
+}
+#caja6{
+    background: radial-gradient(white, yellow);
+
+}
