@@ -12,8 +12,77 @@ img{
 html, body{
     width: 100%;
     height: 100%;
-    background-color: blue;
 }
 p{
     font-size: 0.5em;
+}
+.container{
+    width: 90%;
+    height: 100%;
+    background-color: grey;
+    margin: auto;
+}
+header{
+    width: 100%;
+    height: 15%;
+}
+header h1{
+    padding: 3%;
+}
+.contenedorSecundario{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    height: 75%;
+    background-color: white;
+}
+.contenedorIzquierdo{
+    width: 25%;
+    height: 100%;
+    background-color: orange;
+    display: flex;
+    flex-direction: column;
+}
+.contenedorIzquierdo h3{
+    text-align: center;
+    margin-top: 15%;
+}
+.menu ul{
+    list-style: none;
+    text-align: center;
+    background-color: rgb(173, 173, 173);
+    margin: 15%;
+}
+.menu ul li{
+    padding: 5%;
+}
+.menu ul li:hover{
+    background-color: aqua;
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+}
+.contenido{
+    width: 100%;
+    height: 100%;
+    background-color: aqua;
+    overflow: auto;
+}
+footer{
+    width: 100%;
+    height: 10%;
+    background-color: grey;
+    text-align: center;
+}
+footer h3{
+    margin-top: 1%;
+}
+button{
+    margin-top: 1%;
+}
+@media(max-width: 900px){
+    .menu ul{
+        margin: 15% 0 0 0;
+    }
 }
