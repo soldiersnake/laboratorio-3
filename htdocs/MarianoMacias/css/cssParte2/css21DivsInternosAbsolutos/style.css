@@ -37,14 +37,16 @@ p{
     border-top-left-radius: 15px;
     opacity: 0.7;
     visibility: visible;
-    z-index: 10;
+    z-index: 2;
+    overflow: auto;
 }
 .box2{
     position: absolute;
-    top: 32%;
-    left: 30%;
+    top: 50%;
+    left: 50%;
     width: 32%;
     height: 30%;
+    transform: translate(-50%, -50%);
     text-align: left;
     background-color: violet;
     color: black;
@@ -52,12 +54,13 @@ p{
     border-top-left-radius: 15px;
     opacity: 0.7;
     visibility: visible;
-    z-index: 10;
+    z-index: 2;
+    overflow: auto;
 }
 .box3{
     position: absolute;
-    top: 55%;
-    left: 55%;
+    top: 50%;
+    left: 50%;
     transform: rotate(15deg);
     width: 30%;
     height: 35%;
@@ -68,6 +71,9 @@ p{
     border-top-left-radius: 15px;
     opacity: 0.7;
     visibility: visible;
-    z-index: 10;
+    z-index: 1;
     overflow: auto;
+}
+.box3 img{
+    max-width: 50%;
 }
