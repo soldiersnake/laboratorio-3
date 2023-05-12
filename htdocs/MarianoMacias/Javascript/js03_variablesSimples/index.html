@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+</head>
+<body>
+    <script>
+        let variableSimple = prompt("Ingrese un valor para cargar en una variable global <span style='color:blue'>d</span>")
+        while(!variableSimple){
+            variableSimple = prompt("Recuerde debe de ingresar una variable para iniciar la web")
+        }
+        document.write("<p>Variable <span style='color:blue'>Z</span> Inicializada desde programa: Undefined</p>");
+        document.write("<h2>Carga de Variables glogables</h2>");
+        document.write("<p>Tipo de <span style='color:blue'>Z</span> undefined</p>");
+        document.write("<p>Variable <span style='color:blue'>A</span> Inicializada desde programa: 1</p>");
+        document.write("<p>Tipo de <span style='color:blue'>A</span> number</p>");
+        document.write("<p>Variable <span style='color:blue'>B</span> Inicializada desde programa: 1</p>");
+        document.write("<p>Tipo de <span style='color:blue'>B</span> string</p>");
+        document.write("<p>Variable <span style='color:blue'>C</span> Inicializada desde programa: 2</p>");
+        document.write("<p>Tipo de <span style='color:blue'>C</span> number</p>");
+        document.write("<span style='color:blue'>A</span> + <span style='color:blue'>B</span>: 11");
+        document.write("<p>Tipo de <span style='color:blue'>A</span> + <span style='color:blue'>B</span>: string</p>");
+        document.write("<p><span style='color:blue'>A</span> + <span style='color:blue'>C</span>: 3</p>")
+        document.write("<span style='color:blue'>A</span> + <span style='color:blue'>C</span>: Number");
+        document.write(`<p>La Variable cargada desde teclado: <span style='color:blue'>${variableSimple}</span></p>`)
+        document.write("<p>Tipo de <span style='color:blue'>D</span> string</p>");
+
+    </script>
+    <div>
+        <button><a href="/Javascript/index.html">Volver</a></button>
+    </div>
+</body>
+</html>
