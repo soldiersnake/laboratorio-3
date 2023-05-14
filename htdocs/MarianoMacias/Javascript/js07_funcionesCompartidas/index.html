@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Func. Compartidas - Javascript</title>
+    <style>
+        * {
+            font-size: 36px;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            width: 100%;
+        }
+
+        p {
+            font-size: 0.5em;
+        }
+
+        .container {
+            display: flex;
+            margin: auto;
+            margin-top: 5%;
+            background-color: black;
+            width: 70%;
+            height: 80%x;
+            padding: 0.5%;
+            border-radius: 15px;
+        }
+        input{
+            text-align: right;
+        }
+
+        .calculadora {
+            width: 90%;
+            height: 90%;
+            margin: auto;
+            background-color: antiquewhite;
+            border-radius: 30px;
+        }
+
+        .calculadora input {
+            width: 100%;
+        }
+
+        .botonera {
+            background-color: aqua;
+            text-align: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 1%;
+        }
+
+        .botonera table {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .botonera tr{
+            width: 1000px;
+            
+        }
+        .botonera td {
+            border: none;
+            padding: 0;
+            width: 900px;
+        }
+
+        .botonera button {
+            width: 90%;
+            margin: 0.5%;
+        }
+        .operadores{
+            background-color: pink;
+            text-align: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 1%;
+        }
+        .operadores table{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .operadores tr{
+            width: 1000px;
+            
+        }
+        .operadores td {
+            border: none;
+            padding: 0;
+            width: 900px;
+            height: 100%;
+        }
+        .operadores button {
+            width: 90%;
+            margin: 0.5%;
+            padding: 2%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="calculadora">
+            <input type="text">
+            <div class="botonera">
+                <table>
+                    <tr>
+                        <td><button id="uno" value="1">1</button></td>
+                        <td><button id="dos" value="2">2</button></td>
+                        <td><button id="tres" value="3">3</button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="cuatro" value="4">4</button></td>
+                        <td><button id="cinco" value="5">5</button></td>
+                        <td><button id="seis" value="6">6</button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="siete" value="7">7</button></td>
+                        <td><button id="ocho" value="8">8</button></td>
+                        <td><button id="nueve" value="9">9</button></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="operadores">
+                <table>
+                    <tr>
+                        <td><button id="sumar"><p>+</p></button></td>
+                        <td><button id="mostrar"><p>Muestra Acumulador</p></button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="borrarAcum"><p>Borrar Acumulador</p></button></td>
+                        <td><button id="borrarDisp"><p>Borrar Display</p></button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let input = document.querySelector('input');
+        const sumar = document.getElementById('sumar');
+        const mostrar = document.getElementById('mostrar');
+        const borrarAcum = document.getElementById('borrarAcum');
+        const borrarDisp = document.getElementById('borrarDisp');
+        const uno = document.getElementById('uno');
+        const dos = document.getElementById('dos');
+        const tres = document.getElementById('tres');
+        const cuatro = document.getElementById('cuatro');
+        const cinco = document.getElementById('cinco');
+        const seis = document.getElementById('seis');
+        const siete = document.getElementById('siete');
+        const ocho = document.getElementById('ocho');
+        const nueve = document.getElementById('nueve');
+        let acum = '';
+        let stop = 0;
+
+        uno.addEventListener('click', ()=> {
+            acum = acum + uno.value;
+            input.value = acum
+        });
+        dos.addEventListener('click', ()=> {
+            acum = acum + dos.value;
+            input.value = acum;
+        });
+        tres.addEventListener('click', ()=> {
+            acum = acum + tres.value;
+            input.value = acum;
+        });
+        cuatro.addEventListener('click', ()=> {
+            acum = acum + cuatro.value;
+            input.value = acum;
+        });
+        cinco.addEventListener('click', ()=> {
+            acum = acum + cinco.value;
+            input.value = acum;
+        });
+        seis.addEventListener('click', ()=> {
+            acum = acum + seis.value;
+            input.value = acum;
+        });
+        siete.addEventListener('click', ()=> {
+            acum = acum + siete.value;
+            input.value = acum;
+        });
+        ocho.addEventListener('click', ()=> {
+            acum = acum + ocho.value;
+            input.value = acum;
+        });
+        nueve.addEventListener('click', ()=> {
+            acum = acum + nueve.value;
+            input.value = acum;
+        });
+        
+        sumar.addEventListener('click', () =>{
+            if(stop == NaN){
+                acum = '';
+                stop = 0;
+            }else{
+                stop = stop + parseInt(acum);
+                acum = '';
+                input.value = '';
+                console.log(stop);
+            }
+        });
+
+        mostrar.addEventListener('click', () => {
+            alert(stop);
+            // acum = 0;
+            input.value = '';
+        });
+
+        borrarAcum.addEventListener('click', () => {
+            acum = '';
+            // stop = 0;
+        });
+
+        borrarDisp.addEventListener('click', () => {
+            input.value = '';
+        });
+    </script>
+    <br>
+    <br>
+    <div>
+        <button><a href="/Javascript/index.html">Volver</a></button>
+    </div>
+</body>
+
+</html>

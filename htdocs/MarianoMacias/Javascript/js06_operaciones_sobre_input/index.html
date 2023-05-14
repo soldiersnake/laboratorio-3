@@ -14,23 +14,33 @@
     <input type="text" id="x">
     <button id="MostrarValor">Muestra valor</button>
     <button id="Sumar"">Suma 1</button>
-    <button onclick="Cuadrado()">x**2</button>
+    <button onclick=" Cuadrado()">x**2</button>
     <button onclick="Multiplicar()">Multiplica * 2</button>
     <button onclick="ElevarX()">2**x</button>
+    <div id="alerta" style="display: none;"></div>
     <script>
         // const x = parseInt(document.getElementById('x').value);
         const x = document.getElementById('x');
         const Sumar = document.getElementById('Sumar');
 
-        MostrarValor.addEventListener('click', () =>{
+        const alerta = document.getElementById('alerta');
+        alerta.style.backgroundColor = 'red';
+        alerta.style.color = 'white';
+        alerta.style.padding = '10px';
+        alerta.style.margin = 'auto';
+        alerta.style.textAlign = 'center';
+        alerta.style.width = '50%';
+        alerta.innerHTML = '¡Basta de tirar datos chavón!';
+
+        MostrarValor.addEventListener('click', () => {
             !x.value ? alert('No hay numero ingresado') : alert(x.value);
         })
 
         Sumar.addEventListener('click', () => {
-            let value = parseInt(x.value); 
-            x.value = value+1;
+            let value = parseInt(x.value);
+            x.value = value + 1;
         })
-        
+
 
         // function MostrarValor() {
         //     let x = document.getElementById('x').value;
@@ -48,28 +58,36 @@
         function Cuadrado() {
             let input = document.getElementById('x');
             let x = parseInt(document.getElementById('x').value);
-            if(!x){
+            if (!x) {
                 alert('No hay numero ingresado')
-            }else{
+            } else {
                 input.value = x ** 2;
             }
         }
         function Multiplicar() {
             let input = document.getElementById('x');
             let x = parseInt(document.getElementById('x').value);
-            if(!x){
+            if (!x) {
                 alert('No hay numero ingresado')
-            }else{
+            } else {
                 input.value = x * 2;
             }
         }
         function ElevarX() {
             let input = document.getElementById('x');
             let x = parseInt(document.getElementById('x').value);
-            if(!x){
+            if (input.value == 'Infinity') {
+                alert('Chavon!! deja! ya es infinito por favor alfoja!');
+                alerta.style.display = "block";
+                setTimeout(() => {
+                    alerta.style.display = "none";
+                }, 2000);
+                input.value = '';
+            }
+            else if (!x) {
                 alert('No hay numero ingresado')
-                input.value = "";
-            }else{
+                input.value = '';
+            } else {
                 input.value = 2 ** x;
             }
         }

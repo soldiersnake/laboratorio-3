@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ope entre Input - Javascript</title>
+    <style>
+        * {
+            font-size: 36px;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            width: 100%;
+        }
+
+        p {
+            font-size: 0.5em;
+        }
+
+        .container {
+            /* display: flex; */
+            margin: auto;
+            margin-top: 5%;
+            background-color: papayawhip;
+            width: 70%;
+            height: 80%x;
+            padding: 0.5%;
+            border-radius: 15px;
+            border: 1px solid red;
+        }
+        h2{
+            font-size: 0.90em;
+            text-align: center;
+        }
+        .cuadroInputs{
+            height: 80%;
+            width: 80%;
+            background-color: red;
+            text-align: center;
+            margin: auto;
+            margin-top: 3%;
+            margin-bottom: 1%;
+            padding: 1%;
+            border-radius: 15px;
+            border: 2px solid black;
+            /* float: left; */
+        }
+        .cuadroInputs label{
+            margin: 1%;
+            padding: 5px;
+            width: 10px;
+            align-items: left;
+            /* height: 90%; */
+            /* float: left; */
+        }
+        .cuadroInputs input{
+            width: 70%;
+            margin: 1%;
+        }
+        input:hover{
+            background-color: rgb(221, 213, 213);
+        }
+        .botones{
+            text-align: center;
+            align-items: center;
+            margin-top: 3%;
+            margin-bottom: 3%;
+        }
+        .botones button{
+            background-color: blue;
+            color: white;
+            width: 20%;
+            padding: 0.5%;
+            border-radius: 15px;
+            margin: 0.5%;
+        }
+        button:hover{
+            cursor: pointer;
+            background-color: yellow;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Introducir un valor entre los cuadros de texto y luego al pulsar el boton para ejecutar la funcion
+            correspondiente</h2>
+            <div class="cuadroInputs">
+                <label for="uno">Entrada 1:</label><input type="text" id="uno">
+                <label for="dos">Entrada 2:</label><input type="text" id="dos">
+                <label for="tres">Entrada 3:</label><input type="text" id="tres">
+                <label for="resultado">Resultado:</label><input type="text" id="resultado">
+            </div>
+            <div class="botones">
+                <button id="suma">Suma</button>
+                <button id="promedio">Promedio</button>
+                <button id="mayor">Mayor</button>
+            </div>
+    </div>
+    <script>
+        const uno = document.getElementById('uno');
+        const dos = document.getElementById('dos');
+        const tres = document.getElementById('tres');
+        const resultado = document.getElementById('resultado');
+        const suma = document.getElementById('suma');
+        const promedio = document.getElementById('promedio');
+        const mayor = document.getElementById('mayor');
+
+        suma.addEventListener('click', () => {
+            let sumar = parseInt(uno.value) + parseInt(dos.value) + parseInt(tres.value);
+            resultado.value = sumar;    
+        });
+        promedio.addEventListener('click', () => {
+            let promedio = (parseInt(uno.value) + parseInt(dos.value) + parseInt(tres.value)) / 3;
+            resultado.value = promedio;    
+        });
+        mayor.addEventListener('click', () => {
+            if(parseInt(uno.value) > parseInt(dos.value)){
+                if(parseInt(uno.value) > parseInt(tres.value)){
+                    return resultado.value = uno.value;
+                }
+            }else if(parseInt(dos.value) > parseInt(tres.value)){
+                return resultado.value = dos.value;
+            }else{
+                return resultado.value = tres.value;
+            } 
+        });
+        
+    </script>
+    <br>
+    <br>
+    <div>
+        <button><a href="/Javascript/index.html">Volver</a></button>
+    </div>
+</body>
+
+</html>

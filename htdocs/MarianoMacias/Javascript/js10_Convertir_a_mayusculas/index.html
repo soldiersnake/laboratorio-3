@@ -1,12 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Javascript</title>
+    <title>Mayusculas - Javascript</title>
+    <style>
+        * {
+            font-size: 36px;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            width: 100%;
+        }
+
+        p {
+            font-size: 0.5em;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            padding: 1%;
+            margin: 1%;
+        }
+        .container{
+            margin: auto;
+            background-color: blueviolet;
+            margin-top: 3%;
+            height: 30%;
+            width: 40%;
+            padding: 3%;
+            border-radius: 15px;
+        }
+        input{
+            width: 100%;
+        }
+        input:hover{
+            background-color: aqua;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div class="container">
+        <div class="inputs">
+            <p>Ingrese Nombre:</p>
+            <input type="text" id="nombre">
+            <p>Ingrese Apellido:</p>
+            <input type="text" id="apellido">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('nombre').onchange= function(){
+            this.value = this.value.toUpperCase();
+        }
+        document.getElementById('apellido').onchange= function(){
+            this.value = this.value.toUpperCase();
+        }
+    </script>
+    <br>
+    <br>
+    <div>
+        <button><a href="/Javascript/index.html">Volver</a></button>
+    </div>
 </body>
+
 </html>
