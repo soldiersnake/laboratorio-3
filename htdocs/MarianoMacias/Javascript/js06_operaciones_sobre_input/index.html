@@ -1,12 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javascript</title>
 </head>
+
 <body>
-    
+    <h2>Introducir un valor en el cuadro de texto y luego pulsar el boton para ejecutar el procedimiento correspondiente
+    </h2>
+    <input type="text" id="x">
+    <button id="MostrarValor">Muestra valor</button>
+    <button id="Sumar"">Suma 1</button>
+    <button onclick="Cuadrado()">x**2</button>
+    <button onclick="Multiplicar()">Multiplica * 2</button>
+    <button onclick="ElevarX()">2**x</button>
+    <script>
+        // const x = parseInt(document.getElementById('x').value);
+        const x = document.getElementById('x');
+        const Sumar = document.getElementById('Sumar');
+
+        MostrarValor.addEventListener('click', () =>{
+            !x.value ? alert('No hay numero ingresado') : alert(x.value);
+        })
+
+        Sumar.addEventListener('click', () => {
+            let value = parseInt(x.value); 
+            x.value = value+1;
+        })
+        
+
+        // function MostrarValor() {
+        //     let x = document.getElementById('x').value;
+        //     !x ? alert('No hay numero ingresado') : alert(x);
+        // }
+        // function Sumar() {
+        //     let input = document.getElementById('x');
+        //     let x = parseInt(document.getElementById('x').value);
+        //     if(!x){
+        //         alert('No hay numero ingresado')
+        //     }else{
+        //         input.value = x + 1;
+        //     }
+        // }
+        function Cuadrado() {
+            let input = document.getElementById('x');
+            let x = parseInt(document.getElementById('x').value);
+            if(!x){
+                alert('No hay numero ingresado')
+            }else{
+                input.value = x ** 2;
+            }
+        }
+        function Multiplicar() {
+            let input = document.getElementById('x');
+            let x = parseInt(document.getElementById('x').value);
+            if(!x){
+                alert('No hay numero ingresado')
+            }else{
+                input.value = x * 2;
+            }
+        }
+        function ElevarX() {
+            let input = document.getElementById('x');
+            let x = parseInt(document.getElementById('x').value);
+            if(!x){
+                alert('No hay numero ingresado')
+                input.value = "";
+            }else{
+                input.value = 2 ** x;
+            }
+        }
+
+    </script>
+    <br>
+    <br>
+    <div>
+        <button><a href="/Javascript/index.html">Volver</a></button>
+    </div>
 </body>
+
 </html>
