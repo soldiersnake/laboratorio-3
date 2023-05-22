@@ -1,12 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javascript</title>
 </head>
+
 <body>
-    
+    <style>
+        * {
+            font-size: 36px;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            width: 100%;
+        }
+
+        p {
+            font-size: 0.5em;
+        }
+
+        h3 {
+            font-size: 0.7em;
+        }
+
+        label {
+            font-size: 0.5em;
+        }
+
+        input {
+            font-size: 0.5em;
+        }
+
+        button {
+            font-size: 0.6em;
+            padding: 0.5%;
+            border-radius: 10px;
+        }
+
+        .addPerson {
+            background-color: aqua;
+            width: 95%;
+            margin: auto;
+            margin-top: 3%;
+            padding: 1%;
+        }
+
+        .control {
+            background-color: rgb(204, 226, 113);
+            width: 95%;
+            margin: auto;
+            padding: 1%;
+
+        }
+
+        .presentacion {
+            margin-top: 2%;
+            margin: 2%;
+            display: none;
+        }
+
+        /* table {
+            border: solid;
+            border-collapse: collapse;
+
+        }
+
+        tr {
+            border: solid;
+            border-collapse: collapse;
+            font-size: 0.5em;
+
+        }
+
+        th {
+            font-size: 0.75em;
+            border: solid;
+            border-collapse: collapse;
+            padding: 1%;
+        }
+
+        td {
+            width: 70px;
+            height: 30px;
+            border: solid;
+            background-color: lightblue;
+            font-size: 0.5em;
+            width: 20px;
+
+        } */
+    </style>
+    <div class="container">
+
+        <div class="consigna">
+            <h2>Consignas del ejercicio</h2>
+            <p>Declarar y hacer uso de Objetos de dato (datos de tipo objeto)</p>
+            <p>Cargar de 2 personas un array por programa</p>
+            <p>Dejar de usar la funcion prompt() para ingreso de datos. Armar un contenedor para el ingreso de datos
+                desde consola (solo inputs sin formulario)</p>
+            <p>Dejar de usar Document.write() y escribir contenido dentro de un elemento html (Puede ser un div)</p>
+            <p>Dos botones de para llamar a dos funciones. Una para cargar un nuevo objeto de dato por teclado y otra
+                para mostrar en formato de tabla el arrat completo de elementos con su longitud</p>
+            <p>Un tercer procedimiento para ocultar el elemento de presentacion (usando el parametro de estilo
+                displat:none)</p>
+        </div>
+
+        <div class="addPerson">
+            <h3>Adicionar persona</h3>
+            <div>
+                <label for="nombre">Nombre:</label><br>
+                <input id="nombre" name="nombre" type="text">
+            </div>
+            <div>
+                <label for="apellido">Apellido:</label><br>
+                <input id="apellido" name="apellido" type="text">
+            </div>
+            <div>
+                <label for="nacimiento">Fecha de Nacimiento:</label><br>
+                <input id="nacimiento" name="nacimiento" type="date">
+            </div>
+            <br>
+            <button id="crearPersona">Crear Persona</button>
+        </div>
+        <div class="control">
+            <h2>Control</h2>
+            <button id="listarPersona" onclick="mostrar()">Lista persona</button>
+            <button id="ocultarPresentacion" onclick="ocultar()">Ocultar Presentacion</button>
+        </div>
+        <div class="presentacion" id="presentacion">
+            <h3>Presentacion</h3>
+
+
+        </div>
+    </div>
+    <br>
+    <br>
+    <div>
+        <button><a href="/Javascript/index.html">Volver</a></button>
+    </div>
+    <script>
+
+        let objetoPersona = {};
+        let arregloPersona = [];
+
+        const nombreInput = document.getElementById('nombre');
+        const apellidoInput = document.getElementById('apellido');
+        const nacimientoInput = document.getElementById('nacimiento');
+        const crearPersona = document.getElementById('crearPersona');
+        const listarPersona = document.getElementById('listarPersona');
+        const ocultarPresentacion = document.getElementById('ocultarPresentacion');
+        const presentacion = document.getElementById('presentacion');
+        const miTabla = document.getElementById('miTabla');
+
+
+        crearPersona.addEventListener('click', () => {
+            let nombre = nombreInput.value;
+            let apellido = apellidoInput.value;
+            let nacimiento = nacimientoInput.value;
+            presentacion.innerHTML = texto;
+            // presentacion.removeChild(texto);
+
+            if (nombre != '' && apellido != '' && nacimiento != '') {
+
+                let persona = {
+                    nombre: nombre,
+                    apellido: apellido,
+                    nacimiento: nacimiento
+                }
+                arregloPersona.push(persona);
+                console.log(arregloPersona);
+
+                limpiarValores();
+                actualizarTabla();
+            } else {
+                alert('Los campos Nombre, Apellido y Fecha de nacimiento deben de estar completos...');
+            }
+            actualizarTabla()
+        });
+
+        function actualizarTabla() {
+
+            let texto = '<h3>Presentacion</h3>';
+            texto = texto + "<table border collapse:collapse;border:solid'>";
+            texto = texto + "<h4>La longitud del arreglo de persona es: " + arregloPersona.length;
+            arregloPersona.forEach((item, index) => {
+                texto = texto + "<td>" + item.nombre + "</td>" + "<br/>";
+                texto = texto + "<td>" + item.apellido + "</td>" + "<br/>";
+                texto = texto + "<td>" + item.nacimiento + "</td>" + "<br/></ta";
+                
+            });
+            presentacion.innerHTML = texto;
+        };
+
+
+        function mostrar() {
+            presentacion.style.display = 'block';
+        }
+        function ocultar() {
+            presentacion.style.display = 'none';
+        }
+
+        function limpiarValores() {
+            nombreInput.value = '';
+            apellidoInput.value = '';
+            nacimientoInput.value = '';
+        };
+
+
+
+
+    </script>
 </body>
+
 </html>
