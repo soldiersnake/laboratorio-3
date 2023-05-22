@@ -135,8 +135,8 @@
         </div>
         <div class="presentacion" id="presentacion">
             <h3>Presentacion</h3>
-
-
+            
+            
         </div>
     </div>
     <br>
@@ -148,6 +148,7 @@
 
         let objetoPersona = {};
         let arregloPersona = [];
+
 
         const nombreInput = document.getElementById('nombre');
         const apellidoInput = document.getElementById('apellido');
@@ -163,7 +164,7 @@
             let nombre = nombreInput.value;
             let apellido = apellidoInput.value;
             let nacimiento = nacimientoInput.value;
-            presentacion.innerHTML = texto;
+            // presentacion.innerHTML = texto;
             // presentacion.removeChild(texto);
 
             if (nombre != '' && apellido != '' && nacimiento != '') {
@@ -181,20 +182,21 @@
             } else {
                 alert('Los campos Nombre, Apellido y Fecha de nacimiento deben de estar completos...');
             }
-            actualizarTabla()
+            actualizarTabla();
         });
 
         function actualizarTabla() {
 
             let texto = '<h3>Presentacion</h3>';
             texto = texto + "<table border collapse:collapse;border:solid'>";
-            texto = texto + "<h4>La longitud del arreglo de persona es: " + arregloPersona.length;
             arregloPersona.forEach((item, index) => {
-                texto = texto + "<td>" + item.nombre + "</td>" + "<br/>";
-                texto = texto + "<td>" + item.apellido + "</td>" + "<br/>";
-                texto = texto + "<td>" + item.nacimiento + "</td>" + "<br/></ta";
+                texto = texto  + item.nombre+"</br>";
+                texto = texto  + item.apellido +"</br>";
+                texto = texto  + item.nacimiento +"</br>";
                 
             });
+            texto = texto + "</table>" + "<h4>La longitud del arreglo de persona es: " + arregloPersona.length + "</h4>";
+
             presentacion.innerHTML = texto;
         };
 
