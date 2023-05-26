@@ -66,35 +66,24 @@
             display: none;
         }
 
-        /* table {
+        table {
             border: solid;
             border-collapse: collapse;
-
         }
-
-        tr {
-            border: solid;
-            border-collapse: collapse;
-            font-size: 0.5em;
-
-        }
-
         th {
-            font-size: 0.75em;
+            width: 70px;
+            height: 30px;
             border: solid;
-            border-collapse: collapse;
-            padding: 1%;
+            background-color: yellow;
         }
-
         td {
             width: 70px;
             height: 30px;
             border: solid;
             background-color: lightblue;
-            font-size: 0.5em;
-            width: 20px;
 
-        } */
+        }
+        
     </style>
     <div class="container">
 
@@ -135,8 +124,8 @@
         </div>
         <div class="presentacion" id="presentacion">
             <h3>Presentacion</h3>
-            
-            
+
+
         </div>
     </div>
     <br>
@@ -188,12 +177,20 @@
         function actualizarTabla() {
 
             let texto = '<h3>Presentacion</h3>';
-            texto = texto + "<table border collapse:collapse;border:solid'>";
+
+            texto += "<table>";
+            texto += `<tr><th>Nombre</th> <th>Apellido</th> <th>Fecha de nacimiento</th></tr>`
+
             arregloPersona.forEach((item, index) => {
-                texto = texto  + item.nombre+"</br>";
-                texto = texto  + item.apellido +"</br>";
-                texto = texto  + item.nacimiento +"</br>";
-                
+                texto += '<tr>';
+                texto += '<td>' + item.nombre + '' + '</td>';
+                texto += '<td>' + item.apellido + '' + '</td>';
+                texto += '<td>' + item.nacimiento + '' + '</td>';
+
+                // texto = texto  + item.apellido +"</br>";
+                // texto = texto  + item.nacimiento +"</br>";
+                texto += '</tr>';
+
             });
             texto = texto + "</table>" + "<h4>La longitud del arreglo de persona es: " + arregloPersona.length + "</h4>";
 
