@@ -4,9 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Javascript</title>
+    <title>Location - Javascript</title>
 </head>
 <body>
-    
+    <button id="btnYoutube">Youtube</button>
+    <button id="btnSource">Source Force</button>
+    <button id="btnGmail">Gmail</button>
+    <br>
+    <br>
+    <div>
+        <button><a href="/Javascript/index.html">Volver</a></button>
+    </div>
+    <script>
+        const btnYoutube = document.getElementById('btnYoutube');
+        const btnSource = document.getElementById('btnSource');
+        const btnGmail = document.getElementById('btnGmail');
+
+        btnYoutube.addEventListener('click', () => {
+            window.location.href = 'https://www.youtube.com/'
+        });
+        btnSource.addEventListener('click', () => {
+            window.location.href = 'https://sourceforge.net/';
+        });
+        btnGmail.addEventListener('click', () => {
+            window.location.href = 'http://gmail.com/';
+        });
+    </script>
 </body>
 </html>

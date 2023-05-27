@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+    <style>
+        * {
+            font-size: 36px;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            width: 100%;
+        }
+
+        p {
+            font-size: 0.5em;
+        }
+
+        .container {
+            width: 100%;
+            width: 100%;
+        }
+
+        .cuadro {
+            background-color: bisque;
+            width: 50%;
+            height: 250px;
+            margin: auto;
+            margin-top: 10%;
+            overflow: auto;
+        }
+
+        button {
+            margin-top: 1%;
+            border-radius: 15px;
+            width: 15%;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+        .claseObjetoDinamico {
+            border: 1px solid red;
+            margin: 3px;
+            padding: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button id="crear">Crear</button>
+        <button id="limpiar">Limpiar</button>
+        <button id="info">info</button>
+        <div class="cuadro">
+
+        </div>
+    </div>
+    <br>
+    <br>
+    <div>
+        <button><a href="/Javascript/index.html">Volver</a></button>
+    </div>
+    <script>
+        const objContenido = {};
+        const arrContenido = [];
+        let texto = '<h2>Se ha creado el objeto nº: ';
+        const objDiv = document.createElement('div');
+
+        const cuadro = document.querySelector('.cuadro');
+        const btnCrear = document.getElementById('crear');
+        const btnLimpiar = document.getElementById('limpiar');
+        const btnInfo = document.getElementById('info');
+
+        btnCrear.addEventListener('click', () => {
+
+            const objDiv = document.createElement('div'); // Crear un nuevo elemento div
+            const objetoNumero = cuadro.childNodes.length - 1 + 1; // Obtener el número de objeto
+            const objetoTexto = texto + objetoNumero + '</h2>'; // Crear el texto del objeto
+            objDiv.innerHTML = objetoTexto; // Asignar el contenido al elemento div
+            objDiv.className = 'claseObjetoDinamico';
+            cuadro.appendChild(objDiv); // Agregar el elemento div al cuadro
+
+        });
+
+        btnLimpiar.addEventListener('click', () => {
+            while (cuadro.childNodes.length > 0) {
+                cuadro.removeChild(cuadro.childNodes[0]);
+            }
+        });
+
+        btnInfo.addEventListener('click', () => {
+            alert('La longitud del array es: ' + (cuadro.childNodes.length - 1));
+            cuadro.childNodes.forEach((elemento) => {
+
+                alert(elemento.textContent);
+            });
+        });
+
+        //UN METODO Q FUNCIONA
+        // btnCrear.addEventListener('click', () => {
+        //     let elemento;
+        //     elemento = texto +(arrContenido.length + 1) ;
+        //     arrContenido.push({
+        //         elemento
+        //     });
+        //     console.log(arrContenido)
+        //     let textito = ''; // Declarar la variable textito
+        //     arrContenido.forEach((item, index) => {
+        //         textito = textito + item.elemento + '<br>';
+        //     });
+        //     cuadro.innerHTML = textito;
+        // });
+
+
+    </script>
+</body>
+
+</html>

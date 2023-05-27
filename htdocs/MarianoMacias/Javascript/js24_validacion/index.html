@@ -4,9 +4,110 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Javascript</title>
+    <title>Validacion - Javascript</title>
+    <style>
+        * {
+            font-size: 36px;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            width: 100%;
+        }
+
+        p {
+            font-size: 0.5em;
+        }
+        .container{
+            margin: auto;
+            width: 80%;
+            height: 400px;
+            background-color: aqua;
+        }
+        form{
+            padding: 1%;
+        }
+        .botones{
+            margin: 3%;
+            text-align: center;
+        }
+        button{
+            border-radius: 15px;
+            padding: 1%;
+            width: 20%;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="container">
+        <h2>Confirmacion de envio y de reset</h2>
+        <form id="myForm" >
+            <div>
+                <Label>Ingrese el dia del mes:</Label>
+                <div>
+                    <input type="number" name="dia" id="dia">
+                </div>
+            </div>
+            <div>
+                <label for="apellido">Ingrese el mes:</label>
+                <div>
+                    <input type="number" name="mes" id="mes">
+                </div>
+            </div>
+            <div class="botones">
+                <button type="submit" id="blanquear">Blanquear</button>
+                <button id="enviar">Enviar</button>
+            </div>
+        </form>
+    </div>
+    <br>
+    <br>
+    <div>
+        <button><a href="/Javascript/index.html">Volver</a></button>
+    </div>
+    <script>
+        const blanquear = document.getElementById('blanquear');
+        const enviar = document.getElementById('enviar');
+        const formulario = document.getElementById('myForm');
+        const dia = document.getElementById('dia');
+        const mes = document.getElementById('mes');
+
+        blanquear.addEventListener('click', (e) => {
+            // e.preventDefault();
+            formulario.reset();
+            // return false;
+        });
+
+        dia.addEventListener('keyup', (e) => {
+            if(parseInt(dia.value)  < 1 || parseInt(dia.value) >= 31){
+                alert('El numero ingresado debe de estar en 1 y 31');
+                dia.value = '';
+            }
+        });
+
+        mes.addEventListener('keyup', (e) => {
+            if(parseInt(mes.value)  < 1 || parseInt(mes.value) > 12){
+                alert('El numero ingresado debe de estar en 1 y 12');
+                mes.value = '';
+            }
+        });
+
+        enviar.addEventListener('click', (e) => {
+            if(dia.value == '' || mes.value == ''){
+                e.preventDefault();
+                alert('Los campos nombre y apellido deben de estar completados');
+            }else{
+                let confirmar = confirm('Esta seguro de enviar');
+                if(confirmar){
+                    formulario.method = 'get';
+                    formulario.action = '/Javascript/js21_form_confirmacion/respuestaForm.html';
+                }
+            }
+
+        });
+    </script>
 </body>
 </html>
