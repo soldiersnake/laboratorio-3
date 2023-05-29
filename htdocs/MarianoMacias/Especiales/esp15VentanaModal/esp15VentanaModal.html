@@ -1,16 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Especiales</title>
+    <title>Ventana Modal - Especiales</title>
+    <script src="/Especiales/jquery-3.7.0.min.js"></script>
+    <style>
+        * {
+            font-size: 36px;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            margin: 1%;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        p {
+            font-size: 0.5em;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            background-color: grey;
+            margin: auto;
+        }
+        .formulario {
+            width: 100%;
+            height: 75%;
+            background-color: rgba(212, 230, 153, 0.853);
+        }
+
+        header {
+            width: 100%;
+            height: 15%;
+            background-color: rgba(109, 109, 236, 0.826);
+            text-align: center;
+            padding-top: 1.5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        header h2{
+            margin-left: 10%;
+        }
+        .botones{
+            display: flex;
+            align-items: start;
+            width: 30%;
+        }
+        button{
+            border-radius: 15px;
+            width: 100%;
+            background-color: white;
+            color: blue;
+            width: 150%;
+            padding: 5px;
+        }
+        button:hover{
+            cursor: pointer;
+            background-color: aqua;
+            color: aliceblue;
+            border: 2px blue solid;
+        }
+
+        footer {
+            width: 100%;
+            height: 10%;
+            background-color: rgba(109, 109, 236, 0.826);
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
 </head>
+
 <body>
-    <br>
+    <div class="container">
+        <header>
+            <h2>Articulos</h2>
+            <div class="botones">
+                <button>Cargar Datos</button>
+                <button>Vacias Datos</button>
+            </div>
+        </header>
+        <div class="formulario">
+            
+        </div>
+        <footer>
+            <h3>Mariano Macias</h3>
+        </footer>
+        <script>
+            
+            
+
+
+        </script>
+    </div>
+    <!-- <br>
     <br>
     <div>
         <button><a href="/Especiales/index.html">Volver</a></button>
-    </div>
+    </div> -->
 </body>
+
 </html>
