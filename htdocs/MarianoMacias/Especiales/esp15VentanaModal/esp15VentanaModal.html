@@ -82,6 +82,9 @@
             background-color: rgba(109, 109, 236, 0.826);
             text-align: center;
             padding: 15px;
+            position: fixed;
+            left: 0;
+            bottom: 0;
         }
     </style>
 </head>
@@ -95,12 +98,25 @@
                 <button>Vacias Datos</button>
             </div>
         </header>
-        <div class="formulario">
-            
-        </div>
+        <table>
+            <thead>
+              <tr>
+                <th>CodArt</th>
+                <th>Familia</th>
+                <th>UM</th>
+                <th>Descripción</th>
+                <th>Fecha Alta</th>
+                <th>Saldo Stock</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-body">
+              <!-- Aquí se generarán las filas de la tabla -->
+            </tbody>
+          </table>
         <footer>
             <h3>Mariano Macias</h3>
         </footer>
+        
         <script>
             
             
