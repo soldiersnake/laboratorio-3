@@ -37,6 +37,7 @@
             background-color: grey;
             margin: auto;
         }
+
         .formulario {
             width: 100%;
             height: 75%;
@@ -53,15 +54,18 @@
             align-items: center;
             justify-content: space-between;
         }
-        header h2{
+
+        header h2 {
             margin-left: 10%;
         }
-        .botones{
+
+        .botones {
             display: flex;
             align-items: start;
             width: 30%;
         }
-        button{
+
+        button {
             border-radius: 15px;
             width: 100%;
             background-color: white;
@@ -69,11 +73,47 @@
             width: 150%;
             padding: 5px;
         }
-        button:hover{
+
+        button:hover {
             cursor: pointer;
             background-color: aqua;
             color: aliceblue;
             border: 2px blue solid;
+        }
+
+        .cuerpo {
+            width: 100%;
+            height: 75%;
+            overflow: auto;
+        }
+
+        table {
+            width: 100%;
+            height: 75%;
+            border: solid;
+            border-collapse: collapse;
+        }
+
+        table thead {
+            background-color: red;
+        }
+
+        tr,
+        th,
+        td {
+            border: solid;
+            text-align: center;
+        }
+
+        tfoot {
+            background-color: red;
+            width: 100%;
+            left: 1;
+            bottom: 3;
+        }
+
+        .hidden {
+            display: none;
         }
 
         footer {
@@ -94,56 +134,78 @@
         <header>
             <h2>Articulos</h2>
             <div class="botones">
-                <button>Cargar Datos</button>
-                <button>Vacias Datos</button>
+                <button id="btnMostrar">Cargar Datos</button>
+                <button id="btnVaciar">Vacias Datos</button>
             </div>
         </header>
-        <table>
-            <thead>
-              <tr>
-                <th>CodArt</th>
-                <th>Familia</th>
-                <th>UM</th>
-                <th>Descripción</th>
-                <th>Fecha Alta</th>
-                <th>Saldo Stock</th>
-              </tr>
-            </thead>
-            <tbody id="tabla-body">
-              <!-- Aquí se generarán las filas de la tabla -->
-              <script>
-                $(document).ready(function() {
-                    var tablaBody = $('#tabla-body');
+        <div class="cuerpo">
+            <table class="tablaMuestra hidden">
+                <thead>
+                    <tr>
+                        <th>CodArt</th>
+                        <th>Familia</th>
+                        <th>UM</th>
+                        <th>Descripción</th>
+                        <th>Fecha Alta</th>
+                        <th>Saldo Stock</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-body">
+                    <!-- Aquí se generarán las filas de la tabla -->
+                    <script>
+                        $(document).ready(function () {
+                            var tablaBody = $('#tabla-body');
 
-                    // Realizar la solicitud HTTP para obtener el archivo JSON
-                    $.getJSON('../articulos.json', function(datos) {
-                        // Recorrer los objetos del JSON y generar las filas
-                        $.each(datos, function(index, objeto) {
-                        var fila = $('<tr>');
-                        fila.append($('<td>').text(objeto.codart));
-                        fila.append($('<td>').text(objeto.familia));
-                        fila.append($('<td>').text(objeto.um));
-                        fila.append($('<td>').text(objeto.description));
-                        fila.append($('<td>').text(objeto.fechaAlta));
-                        fila.append($('<td>').text(objeto.stock));
-                        tablaBody.append(fila);
+                            // Realizar la solicitud HTTP para obtener el archivo JSON
+                            $.getJSON('../articulos.json', function (datos) {
+                                // Recorrer los objetos del JSON y generar las filas
+                                $.each(datos, function (index, objeto) {
+                                    var fila = $('<tr>');
+                                    fila.append($('<td>').text(objeto.codart));
+                                    fila.append($('<td>').text(objeto.familia));
+                                    fila.append($('<td>').text(objeto.um));
+                                    fila.append($('<td>').text(objeto.description));
+                                    fila.append($('<td>').text(objeto.fechaAlta));
+                                    fila.append($('<td>').text(objeto.stock));
+                                    tablaBody.append(fila);
+                                });
+                            });
                         });
-                });
-                });
 
-              </script>
-            </tbody>
-          </table>
+                    </script>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>CodArt</th>
+                        <th>Familia</th>
+                        <th>UM</th>
+                        <th>Descripción</th>
+                        <th>Fecha Alta</th>
+                        <th>Saldo Stock</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
         <footer>
             <h3>Mariano Macias</h3>
         </footer>
-        
+
         <script>
-            
-            
+            $(document).ready(() => {
+                let tabla = $('.tablaMuestra');
+                let btnMostrar = $('#btnMostrar');
+                let btnVaciar = $('#btnVaciar');
 
+                btnMostrar.on('click', () => {
+                    tabla.removeClass('hidden');
+                });
 
+                btnVaciar.on('click', () => {
+                    tabla.addClass('hidden');
+                });
+            })
         </script>
+
     </div>
     <!-- <br>
     <br>

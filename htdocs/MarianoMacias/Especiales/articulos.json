@@ -38,5 +38,56 @@
         "description": "Fresa Roja Orig. Patagonia",
         "fechaAlta": "2013-07-25",
         "stock": 15
+    },
+    {
+        "codart": "FRESA105",
+        "familia": "FRSEC",
+        "um": "KG",
+        "description": "Fresa Roja Orig. Patagonia",
+        "fechaAlta": "2013-07-25",
+        "stock": 15
+    },
+    {
+        "codart": "FRESA105",
+        "familia": "FRSEC",
+        "um": "KG",
+        "description": "Fresa Roja Orig. Patagonia",
+        "fechaAlta": "2013-07-25",
+        "stock": 15
+    },{
+        "codart": "FRESA105",
+        "familia": "FRSEC",
+        "um": "KG",
+        "description": "Fresa Roja Orig. Patagonia",
+        "fechaAlta": "2013-07-25",
+        "stock": 15
+    },{
+        "codart": "FRESA105",
+        "familia": "FRSEC",
+        "um": "KG",
+        "description": "Fresa Roja Orig. Patagonia",
+        "fechaAlta": "2013-07-25",
+        "stock": 15
+    },{
+        "codart": "FRESA105",
+        "familia": "FRSEC",
+        "um": "KG",
+        "description": "Fresa Roja Orig. Patagonia",
+        "fechaAlta": "2013-07-25",
+        "stock": 15
+    },{
+        "codart": "FRESA105",
+        "familia": "FRSEC",
+        "um": "KG",
+        "description": "Fresa Roja Orig. Patagonia",
+        "fechaAlta": "2013-07-25",
+        "stock": 15
+    },{
+        "codart": "FRESA105",
+        "familia": "FRSEC",
+        "um": "KG",
+        "description": "Fresa Roja Orig. Patagonia",
+        "fechaAlta": "2013-07-25",
+        "stock": 15
     }
 ]
