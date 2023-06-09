@@ -111,6 +111,27 @@
             </thead>
             <tbody id="tabla-body">
               <!-- Aquí se generarán las filas de la tabla -->
+              <script>
+                $(document).ready(function() {
+                    var tablaBody = $('#tabla-body');
+
+                    // Realizar la solicitud HTTP para obtener el archivo JSON
+                    $.getJSON('../articulos.json', function(datos) {
+                        // Recorrer los objetos del JSON y generar las filas
+                        $.each(datos, function(index, objeto) {
+                        var fila = $('<tr>');
+                        fila.append($('<td>').text(objeto.codart));
+                        fila.append($('<td>').text(objeto.familia));
+                        fila.append($('<td>').text(objeto.um));
+                        fila.append($('<td>').text(objeto.description));
+                        fila.append($('<td>').text(objeto.fechaAlta));
+                        fila.append($('<td>').text(objeto.stock));
+                        tablaBody.append(fila);
+                        });
+                });
+                });
+
+              </script>
             </tbody>
           </table>
         <footer>
