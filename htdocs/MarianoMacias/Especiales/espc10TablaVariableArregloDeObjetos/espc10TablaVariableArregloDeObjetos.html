@@ -1,16 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Especiales</title>
+    <title>Ventana Modal - Especiales</title>
+    <script src="/Especiales/jquery-3.7.0.min.js"></script>
+    <style>
+        * {
+            font-size: 36px;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            margin: 1%;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        p {
+            font-size: 0.5em;
+        }
+        h3{
+            text-align: center;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            background-color: grey;
+            margin: auto;
+        }
+
+        .formulario {
+            width: 100%;
+            height: 75%;
+            background-color: rgba(212, 230, 153, 0.853);
+        }
+
+        header {
+            width: 100%;
+            height: 15%;
+            background-color: rgba(109, 109, 236, 0.826);
+            text-align: center;
+            padding-top: 1.5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header h2 {
+            margin-left: 10%;
+        }
+
+        .botones {
+            display: flex;
+            align-items: start;
+            width: 30%;
+        }
+
+        button {
+            border-radius: 15px;
+            width: 100%;
+            background-color: white;
+            color: blue;
+            width: 150%;
+            padding: 5px;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background-color: aqua;
+            color: aliceblue;
+            border: 2px blue solid;
+        }
+
+        .cuerpo {
+            width: 100%;
+            height: 75%;
+            overflow: auto;
+        }
+
+        table {
+            width: 100%;
+            height: 75%;
+            border: solid;
+            border-collapse: collapse;
+        }
+
+        table thead {
+            background-color: red;
+        }
+
+        tr,
+        th,
+        td {
+            border: solid;
+            text-align: center;
+        }
+
+        tfoot {
+            background-color: red;
+            width: 100%;
+            position: sticky;
+            bottom: 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        footer {
+            width: 100%;
+            height: 10%;
+            background-color: rgba(109, 109, 236, 0.826);
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+        }
+
+        .VentanaModal {
+            width: 65%;
+            height: 60%;
+            overflow: auto;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(212, 230, 153, 0.853);
+            z-index: 999;
+            display: none;
+        }
+
+        .headerVentanaModal {
+            height: 15%;
+            background-color: paleturquoise;
+        }
+
+        .footerVentanaModal {
+            height: 15%;
+            text-align: center;
+            background-color: paleturquoise;
+        }
+
+        .btnAbrirModal{
+            background-color: blue;
+            border-radius: 15px;
+            padding: 3px;
+            margin: 3px;
+        }
+        .btnAbrirModal:hover{
+            background-color: black;
+            color: white;
+            cursor: pointer;
+        }
+
+        .formulario {
+            background-color: rgba(212, 230, 153, 0.853);
+            height: 70%;
+            overflow: auto;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }
+        .inputsForm input{
+            width: 250px;
+            border-radius: 15px;
+        }
+        .inputsForm select{
+            width: 280px;
+            border-radius: 15px;
+        }
+
+        .inputsForm label {
+            display: block;
+            margin-bottom: 5px;
+            
+        }
+        .inputsForm input:hover{
+            background-color: beige;
+        }
+        .btnForm{
+            margin-top: 2%;
+            border-radius: 15px;
+            width: 250px;
+            background-color: white;
+            color: blue;
+        }
+        .btnForm:hover{
+            cursor: pointer;
+            background-color: aqua;
+            color: aliceblue;
+            border: 2px blue solid;
+        }
+        .btnCerrarModal{
+            background-color: red;
+            border: 2px solid black;
+            width: 5%;
+            padding: 15px;
+            color: black;
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 5px;
+            border: none;
+        }
+        .btnCerrarModal:hover{
+            cursor: pointer;
+            background-color: black;
+            color: white;
+        }
+        .modal-open {
+    pointer-events: none;
+    /* opacity: 0.3; */
+}
+
+.container.modal-open {
+    pointer-events: none;
+    opacity: 0.3;
+}
+.VentanaModal {
+    pointer-events: auto;
+    opacity: 1;
+}
+.mostrar{
+    opacity:1;
+}
+    </style>
+
+    <script>
+        $(document).ready(() => {
+            $("#btnAbrirModal").click(() => {
+                $(".container").addClass("modal-open");
+                $("#modal").addClass('.mostrar');
+                $("#modal").show();
+            });
+
+            $(".btnCerrarModal").click(() => {
+                $(".container").removeClass("modal-open");
+                $(".VentanaModal").hide();
+            });
+        });
+
+
+        $(document).ready(() => {
+            let tabla = $('.tablaMuestra');
+            let btnMostrar = $('#btnMostrar');
+            let btnVaciar = $('#btnVaciar');
+
+            btnMostrar.on('click', () => {
+                tabla.removeClass('hidden');
+            });
+
+            btnVaciar.on('click', () => {
+                tabla.addClass('hidden');
+            });
+        })
+
+
+    </script>
+
 </head>
+
+
 <body>
-    <br>
-    <br>
-    <div>
-        <button><a href="/Especiales/index.html">Volver</a></button>
+    <div class="container">
+        <header>
+            <h2>Articulos</h2>
+            <div class="botones">
+                <button id="btnMostrar">Cargar Datos</button>
+                <button id="btnVaciar">Vacias Datos</button>
+                <button id="btnAbrirModal">Cargar Formulario</button>
+            </div>
+        </header>
+        <div class="cuerpo">
+            <table class="tablaMuestra hidden">
+                <thead>
+                    <tr>
+                        <th>CodArt</th>
+                        <th>Familia</th>
+                        <th>UM</th>
+                        <th>Descripción</th>
+                        <th>Fecha Alta</th>
+                        <th>Saldo Stock</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-body">
+                    <!-- Aquí se generarán las filas de la tabla -->
+                    <script>
+                        $(document).ready(function () {
+                            var tablaBody = $('#tabla-body');
+
+                            // Realizar la solicitud HTTP para obtener el archivo JSON
+                            $.getJSON('../articulos.json', function (datos) {
+                                // Recorrer los objetos del JSON y generar las filas
+                                $.each(datos, function (index, objeto) {
+                                    var fila = $('<tr>');
+                                    fila.append($('<td>').text(objeto.codart));
+                                    fila.append($('<td>').text(objeto.familia));
+                                    fila.append($('<td>').text(objeto.um));
+                                    fila.append($('<td>').text(objeto.description));
+                                    fila.append($('<td>').text(objeto.fechaAlta));
+                                    fila.append($('<td>').text(objeto.stock));
+                                    tablaBody.append(fila);
+                                });
+                            });
+                        });
+
+                    </script>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>CodArt</th>
+                        <th>Familia</th>
+                        <th>UM</th>
+                        <th>Descripción</th>
+                        <th>Fecha Alta</th>
+                        <th>Saldo Stock</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <footer>
+            <h3>Mariano Macias</h3>
+        </footer>
+
     </div>
+    <div class="VentanaModal" id="modal">
+        <div class="headerVentanaModal">
+            <h3 class="itemMid">Formulario de alta</h3>
+            <button class="btnCerrarModal">X</button>
+        </div>
+        <div class="formulario">
+            <form action="/Especiales/esp05FormVariableArregloDeObjetos/respuesta.html" method="get" id="myForm">
+                <div class="inputsForm" style="margin-top: 1%;">
+                    <label for="codart">Codigo articulo:</label>
+                    <input type="text" id="codart" name="codart" required>
+                </div>
+                <div class="inputsForm">
+                    <label for="description">Descripcion:</label>
+                    <input type="text" id="description" name="description" required>
+                </div>
+                <div class="inputsForm">
+                    <label for="stock">Saldo Stock:</label>
+                    <input type="number" id="stock" name="stock" required>
+                </div>
+                <div class="inputsForm">
+                    <label for="familia">Familia del articulo:</label>
+                    <select name="familia" id="familia" required>
+                        <option value="">Selecciona una opcion</option>
+                        <script>
+                            $(document).ready(function () {
+                                $.getJSON("../familias.json", (data) => {
+                                    var select = $("#familia");
+                                    $.each(data, (index, item) => {
+                                        select.append('<option value="' + item.nombre + '">' + item.nombre + '</option>');
+                                    });
+                                });
+                            });
+                        </script>
+                    </select>
+                </div>
+                <div class="inputsForm">
+                    <label for="fechaAlta">Fecha de alta:</label>
+                    <input type="date" id="fechaAlta" name="fechaAlta" required>
+                </div>
+                <button class="btnForm" type="submit" id="btnEnviar">
+                    Enviar
+                </button>
+            </form>
+        </div>
+        <div class="footerVentanaModal">
+            <h4>Pie de formulario</h4>
+        </div>
+
 </body>
+
 </html>
