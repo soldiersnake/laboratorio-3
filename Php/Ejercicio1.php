@@ -96,5 +96,3 @@
     echo '<p>Asi se asigna una expresion aritmetica por ejemplo de Div (5X / 5Y) = '.$variable5X/$variable5Y. '</p>';
 
 ?>
-
-
