@@ -4,7 +4,8 @@
 <?php
     include('./ejemplo2.php');
     require('./ejemplo2.php');
-    
+    include('./ejemplo2.inc');
+    echo $variable2;
     echo 'el mensaje es: '.$variable;
     echo '<p>La longitud del arreglo es: '. count($arrPersona).' </p>';
 ?>

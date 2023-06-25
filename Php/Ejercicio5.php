@@ -1,4 +1,4 @@
-<form action="/Php/respuesta.php" method="post">
+<form action="/Php/respuesta5.php" method="post">
     <label for="nombre">Nombre:</label>
     <input type="text" id="nombre" name="nombre"><br>
     <label for="nombre">Apellido:</label>
