@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabla Formulario</title>
+    <title>Formulario BBDD</title>
     <style>
 
         html, body
@@ -33,7 +33,7 @@
         header, footer
         {
             font-weight: bold;
-            background-color: #333;
+            background-color: #69a4d7;
             height: 10%;
             width: 100%;
             color: white;
@@ -55,7 +55,7 @@
         .th
         {
             text-align: center;
-            background-color: bisque;
+            background-color: rgb(160, 144, 124);
             padding: 10px 10px 25px 10px;
             box-sizing: border-box;
             border-right: 2px solid orange;
@@ -82,10 +82,10 @@
             width: 20vw;
         }
 
-        [campo-dato = "año"]
+        /* [campo-dato = "año"]
         {
             width: 10vw;
-        }
+        } */
 
         /* [campo-dato = "deporte"]
         {
@@ -112,10 +112,10 @@
 
         @media (max-width: 900px)
         {
-            [campo-dato = "año"]
+            /* [campo-dato = "año"]
             {
                 display: none;
-            }
+            } */
 
             [campo-dato = "precio"]
             {
@@ -149,6 +149,16 @@
             }
         } */
 
+        button{
+            border-radius: 15px;
+            background-color: white;
+            font-weight: bold;
+        }
+        button:hover{
+            cursor: pointer;
+            background-color: black;
+            color: yellow;
+        }
         #botones
         {
             position: fixed;
@@ -209,6 +219,7 @@
 <body>
     <div id="contenedor">
         <header>
+            <h2>Forms BBDD</h2>
             <div id="botones">
                 
                 <input type="text" readonly id="orden" value="Precio">
@@ -220,17 +231,19 @@
             <thead>
                 <tr>
                     <th campo-dato="id" class="th" id="thId">ID</th>
+                    <!-- <th campo-dato="description" class="th" id="thDescription">Descripcion</th> -->
                     <th campo-dato="marca" class="th" id="thMarca">Marca</th>
                     <th campo-dato="modelo" class="th" id="thModelo">Modelo</th>
                     <th campo-dato="precio" class="th" id="thPrecio">Precio</th>
-                    <th campo-dato="año" class="th" id="thAño">Año</th>
+                    <!-- <th campo-dato="año" class="th" id="thAño">Año</th> -->
                 </tr>
                 <tr>
                     <td campo-dato="id" class="th"  ><input id="filtroId" type="text"></td>
+                    <!-- <td campo-dato="marca" class="th"  ><input id="filtroDescription" type="text"></td> -->
                     <td campo-dato="marca" class="th"  ><input id="filtroMarca" type="text"></td>
                     <td campo-dato="modelo" class="th" ><input  id="filtroModelo" type="text"></td>
                     <td campo-dato="precio" class="th" ><input id="filtroPrecio" type="text"></td>
-                    <td campo-dato="año" class="th" ><input id="filtroFecha" type="text"></td>
+                    <!-- <td campo-dato="año" class="th" ><input id="filtroFecha" type="text"></td> -->
                 </tr>
 
             </thead>
@@ -239,7 +252,7 @@
             </tbody>
         </table>
         <footer>
-            Footer
+            Mariano Macias - Laboratorio 3
         </footer>
 
         
@@ -251,34 +264,38 @@
 <script src="../jquery.js"></script>
 
 <script>
-    var jsonDeportes = '{"deportes":[{"nombre":"Fútbol", "sigla":"F"}, {"nombre":"Rugby", "sigla":"R"}, {"nombre":"Tenis", "sigla":"T"}, {"nombre":"Natación", "sigla":"N"}, {"nombre":"Handball", "sigla":"H"}]}';
-    var objDeportes = JSON.parse(jsonDeportes);
-    var deportes = document.getElementById("deportes");
+    // var jsonDeportes = '{"deportes":[{"nombre":"Fútbol", "sigla":"F"}, {"nombre":"Rugby", "sigla":"R"}, {"nombre":"Tenis", "sigla":"T"}, {"nombre":"Natación", "sigla":"N"}, {"nombre":"Handball", "sigla":"H"}]}';
+    // var objDeportes = JSON.parse(jsonDeportes);
+    // var deportes = document.getElementById("deportes");
     var flag = 0;
 
-    $(document).ready(function(){
+    $(document).ready(()=>{
         
-        $("#thId").click(function(){
-            $("#orden").val("ID");
+        $("#thId").click(()=>{
+            $("#orden").val("id");
         });
 
-        $("#thMarca").click(function(){
-            $("#orden").val("Marca");
+        $("#thDescription").click(()=>{
+            $("#orden").val("description");
         });
 
-        $("#thModelo").click(function(){
-            $("#orden").val("Modelo");
+        $("#thMarca").click(()=>{
+            $("#orden").val("marca");
         });
 
-        $("#thPrecio").click(function(){
-            $("#orden").val("Precio");
+        $("#thModelo").click(()=>{
+            $("#orden").val("modelo");
         });
 
-        $("#thAño").click(function(){
-            $("#orden").val("Fecha");
+        $("#thPrecio").click(()=>{
+            $("#orden").val("precio");
         });
 
-        $("#cargar").click(function(){
+        // $("#thAño").click(function(){
+        //     $("#orden").val("Fecha");
+        // });
+
+        $("#cargar").click(() =>{
             console.log("cargando...");
             $("#tabla").empty();
             $("#tabla").html("<h3><i>Cargando datos...</i></h3>");
@@ -289,35 +306,39 @@
                 data: { 
                         orden: $("#orden").val(), 
                         id: $("#filtroId").val(),
+                        // description: $("#filtroDescription").val(),
                         marca: $("#filtroMarca").val(),
                         modelo: $("#filtroModelo").val(),
-                        precio: $("#filtroPrecio").val(),
-                        fecha: $("#filtroFecha").val()
+                        precio: $("#filtroPrecio").val()
                     },
-                success: function(respuestaServer){
+                success: (respuestaServer) =>{
                     alert(respuestaServer);
+                    console.log(respuestaServer);
                     $("#tabla").empty();
-                    var objJson = JSON.parse(respuestaServer);
-                    objJson.guitarras.forEach(function(valor, indice)
+                    const objJson = JSON.parse(respuestaServer);
+                    objJson.Autos.forEach((valor, indice) =>
                     {
                         
-                        var objTr = document.createElement("tr");
-                        var tdId = document.createElement("td");
+                        const objTr = document.createElement("tr");
+                        const tdId = document.createElement("td");
 
-                        var tdMarca = document.createElement("td");
-                        var tdModelo = document.createElement("td");
-                        var tdPrecio = document.createElement("td");
-                        var tdAño = document.createElement("td");
+                        const tdDescription = document.createElement("td");
+                        const tdMarca = document.createElement("td");
+                        const tdModelo = document.createElement("td");
+                        const tdPrecio = document.createElement("td");
+                        // var tdAño = document.createElement("td");
                         tdId.innerHTML = valor.id;
                         objTr.appendChild(tdId);
+                        // tdDescription.innerHTML = valor.description;
+                        // objTr.appendChild(tdId);
                         tdMarca.innerHTML = valor.marca;
                         objTr.appendChild(tdMarca);
                         tdModelo.innerHTML = valor.modelo;
                         objTr.appendChild(tdModelo);
                         tdPrecio.innerHTML = valor.precio;
                         objTr.appendChild(tdPrecio);
-                        tdAño.innerHTML = valor.año;
-                        objTr.appendChild(tdAño);
+                        // tdAño.innerHTML = valor.año;
+                        // objTr.appendChild(tdAño);
                         $("#tabla").append(objTr);
                     });
                 }
@@ -325,7 +346,7 @@
 
         });
 
-        $("#vaciar").click(function(){
+        $("#vaciar").click(()=>{
             $("#tabla").empty();
             flag = 0;
         })

@@ -1,0 +1,83 @@
+-- Crear la tabla "marca"
+CREATE TABLE marca (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  description VARCHAR(20)
+);
+
+-- Crear la tabla "productos" con la relación a la tabla "marca"
+CREATE TABLE productos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  description VARCHAR(30),
+  precio DECIMAL(10, 2),
+  color VARCHAR(20),
+  modelo VARCHAR(20),
+  marca_id INT,
+  FOREIGN KEY (marca_id) REFERENCES marca(id)
+);
+
+
+-- Insertar registros en la tabla "marca"
+INSERT INTO marca (description) VALUES
+('Ford'),
+('Fiat'),
+('Porsche'),
+('Volkswagen'),
+('Renault'),
+('Citroen'),
+('Honda');
+
+-- Insertar registros en la tabla "productos" para la marca "Ford"
+INSERT INTO productos (description, precio, color, modelo, marca_id) VALUES
+('Fiesta', 15000.00, 'Rojo', '2022', 1),
+('Focus', 20000.00, 'Azul', '2022', 1),
+('Mustang', 50000.00, 'Negro', '2022', 1),
+('Ranger', 25000.00, 'Blanco', '2022', 1),
+('Explorer', 40000.00, 'Gris', '2022', 1);
+
+-- Insertar registros en la tabla "productos" para la marca "Fiat"
+INSERT INTO productos (description, precio, color, modelo, marca_id) VALUES
+('500', 18000.00, 'Verde', '2022', 2),
+('Punto', 22000.00, 'Blanco', '2022', 2),
+('Tipo', 25000.00, 'Gris', '2022', 2),
+('Doblò', 27000.00, 'Azul', '2022', 2),
+('500X', 30000.00, 'Negro', '2022', 2);
+
+-- Insertar registros en la tabla "productos" para la marca "Porsche"
+INSERT INTO productos (description, precio, color, modelo, marca_id) VALUES
+('911', 90000.00, 'Rojo', '2022', 3),
+('Panamera', 120000.00, 'Gris', '2022', 3),
+('Cayenne', 100000.00, 'Negro', '2022', 3),
+('Macan', 80000.00, 'Blanco', '2022', 3),
+('Taycan', 110000.00, 'Azul', '2022', 3);
+
+-- Insertar registros en la tabla "productos" para la marca "Volkswagen"
+INSERT INTO productos (description, precio, color, modelo, marca_id) VALUES
+('Golf', 25000.00, 'Azul', '2022', 4),
+('Polo', 20000.00, 'Blanco', '2022', 4),
+('Passat', 30000.00, 'Gris', '2022', 4),
+('Tiguan', 35000.00, 'Negro', '2022', 4),
+('Arteon', 40000.00, 'Rojo', '2022', 4);
+
+-- Insertar registros en la tabla "productos" para la marca "Renault"
+INSERT INTO productos (description, precio, color, modelo, marca_id) VALUES
+('Clio', 18000.00, 'Negro', '2022', 5),
+('Megane', 22000.00, 'Blanco', '2022', 5),
+('Captur', 25000.00, 'Rojo', '2022', 5),
+('Kadjar', 27000.00, 'Gris', '2022', 5),
+('Talisman', 30000.00, 'Azul', '2022', 5);
+
+-- Insertar registros en la tabla "productos" para la marca "Citroen"
+INSERT INTO productos (description, precio, color, modelo, marca_id) VALUES
+('C3', 16000.00, 'Rojo', '2022', 6),
+('C4', 20000.00, 'Gris', '2022', 6),
+('C5', 25000.00, 'Blanco', '2022', 6),
+('Berlingo', 22000.00, 'Azul', '2022', 6),
+('Cactus', 18000.00, 'Negro', '2022', 6);
+
+-- Insertar registros en la tabla "productos" para la marca "Honda"
+INSERT INTO productos (description, precio, color, modelo, marca_id) VALUES
+('Civic', 22000.00, 'Negro', '2022', 7),
+('Accord', 28000.00, 'Blanco', '2022', 7),
+('CR-V', 32000.00, 'Gris', '2022', 7),
+('HR-V', 25000.00, 'Rojo', '2022', 7),
+('Jazz', 20000.00, 'Azul', '2022', 7);
