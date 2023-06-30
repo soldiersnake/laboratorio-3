@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario BBDD</title>
+    <style>
+
+        html, body
+        {
+            width: 100vw;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        h2{
+            color: yellow;
+        }
+
+        #contenedor
+        {
+            width: 100%;
+            height: 100%;
+        }
+
+        table
+        {
+            /* display: block; */
+            display: table;
+            height: 100%;
+            width: 100vw;
+            border-collapse: collapse;
+            overflow: auto;
+        }
+
+        header, footer
+        {
+            font-weight: bold;
+            background-color: black;
+            height: 10%;
+            width: 100%;
+            color: white;
+            padding: 30px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        footer
+        {
+            position: fixed;
+            bottom:0;
+            left:0;
+        }
+
+        .th
+        {
+            text-align: center;
+            background-color: rgba(255, 0, 0, 0.774);
+            padding: 10px 10px 25px 10px;
+            box-sizing: border-box;
+            border-right: 2px solid orange;
+            cursor: pointer;
+        }
+
+        [campo-dato = "id"]
+        {
+            width: 10vw;
+        }
+
+        [campo-dato = "marca"]
+        {
+            width: 30vw;
+        }
+
+        [campo-dato = "modelo"]
+        {
+            width: 30vw;
+        }
+        
+        [campo-dato = "precio"]
+        {
+            width: 20vw;
+        }
+
+        /* [campo-dato = "año"]
+        {
+            width: 10vw;
+        } */
+
+        /* [campo-dato = "deporte"]
+        {
+            width: 20vw;
+            color: darkslateblue;
+            font-weight: bold;
+        } */
+
+        tbody tr:nth-child(odd)
+        {
+            background-color: lavender;
+        }
+
+        tbody tr:nth-child(even)
+        {
+            background-color: rgb(203, 203, 251);
+        }
+
+        td
+        {
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .marginIzquierdo{
+            margin-right: 20px;
+        }
+
+        @media (max-width: 900px)
+        {
+            /* [campo-dato = "año"]
+            {
+                display: none;
+            } */
+
+            [campo-dato = "precio"]
+            {
+                width: 35vw;
+            }
+        }
+
+        @media (max-width: 600px)
+        {
+            [campo-dato = "precio"]
+            {
+                display: none;
+            }
+
+            [campo-dato = "modelo"]
+            {
+                width: 60vw;
+            }
+        }
+
+        /* @media (max-width: 600px)
+        {
+            [campo-dato = "precio"]
+            {
+                display: none;
+            }
+
+            [campo-dato = "deporte"]
+            {
+                width: 85vw;
+            }
+        } */
+
+        button{
+            border-radius: 15px;
+            background-color: white;
+            font-weight: bold;
+        }
+        button:hover{
+            cursor: pointer;
+            background-color: black;
+            color: yellow;
+            border: 4px solid yellow;
+        }
+        #botones
+        {
+            position: fixed;
+            right: 20px;
+        }
+
+        #botones button
+        {
+            padding: 10px;
+            width: 100px;
+            font-weight: bold;
+        }
+
+
+        /* ////////////////////////// */
+
+        h3
+        {
+            margin: 0;
+        }
+
+        #titulo
+        {
+            background-color: black;
+            color: white;
+            height: 10%;
+            width: 100%;
+            padding-left: 10px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .opcion
+        {
+            float: left;
+            height: 30%;
+            width: 50%;
+        }
+        thead{
+            width: 100%;
+        }
+        thead input
+        {
+            display: block;
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+            margin: auto;
+        }
+
+        button
+        {
+            padding: 5px;
+        }
+ 
+    </style>
+</head>
+<body>
+    <div id="contenedor">
+        <header>
+            <h2>ABM form's - Pokemon</h2>
+            <div id="botones">
+                
+                <!-- <input type="text" readonly id="orden" value="Precio"> -->
+                <button id="cargar">Cargar</button>
+                <button id="vaciar">Vaciar</button>
+                <button id="limpiarFiltros">Limpiar</button>
+                <button id="altaRegistro">Alta</button>
+            </div>
+        </header>
+        <table>
+            <thead>
+                <tr>
+                    <th campo-dato="id" class="th" id="thId">ID</th>
+                    <!-- <th campo-dato="description" class="th" id="thDescription">Descripcion</th> -->
+                    <th campo-dato="nombre" class="th" id="thNombre">Nombre</th>
+                    <th campo-dato="tipo" class="th" id="thTipo">Tipo</th>
+                    <th campo-dato="ataque" class="th" id="thAtaque">Ataque principal</th>
+                    <th campo-dato="debilidad" class="th" id="thPrecio">Debilidad</th>
+                    <th campo-dato="pdf" class="th" id="thPdf">Pdf's</th>
+                    <th campo-dato="modificacion" class="th" id="thPrecio">Modificacion</th>
+                    <th campo-dato="baja" class="th" id="thPrecio">Baja</th>
+
+                    <!-- <th campo-dato="año" class="th" id="thAño">Año</th> -->
+                </tr>
+                <tr>
+                    <td campo-dato="id" class="th"  ><input id="filtroId" type="text"></td>
+                    <!-- <td campo-dato="marca" class="th"  ><input id="filtroDescription" type="text"></td> -->
+                    <td campo-dato="nombre" class="th"  ><input id="filtroNombre" type="text"></td>
+                    <td campo-dato="tipo" class="th" ><input  id="filtroTipo" type="text"></td>
+                    <td campo-dato="ataque" class="th" ><input id="filtroAtaque" type="text"></td>
+                    <td campo-dato="debilidad" class="th" ><input id="filtroDebilidad" type="text"></td>
+                    <td campo-dato="pdf" class="th" ><button class="botoncito">Pdf</button></td>
+                    <td campo-dato="modificacion" class="th" ><button class="botoncito">Modi</button></td>
+                    <td campo-dato="baja" class="th" ><button class="botoncito marginIzquierdo">Baja</button></td>
+
+
+                    <!-- <td campo-dato="año" class="th" ><input id="filtroFecha" type="text"></td> -->
+                </tr>
+
+            </thead>
+            <tbody id="tabla">
+    
+            </tbody>
+        </table>
+        <footer>
+            <h2>
+                Mariano Macias - Laboratorio 3
+            </h2>
+        </footer>
+
+        
+    </div>
+
+</body>
+</html>
+
+<script src="../jquery.js"></script>
+
+<script>
+    // var jsonDeportes = '{"deportes":[{"nombre":"Fútbol", "sigla":"F"}, {"nombre":"Rugby", "sigla":"R"}, {"nombre":"Tenis", "sigla":"T"}, {"nombre":"Natación", "sigla":"N"}, {"nombre":"Handball", "sigla":"H"}]}';
+    // var objDeportes = JSON.parse(jsonDeportes);
+    // var deportes = document.getElementById("deportes");
+    var flag = 0;
+
+    $(document).ready(()=>{
+        
+        $("#thId").click(()=>{
+            $("#orden").val("id");
+        });
+
+        $("#thDescription").click(()=>{
+            $("#orden").val("description");
+        });
+
+        $("#thMarca").click(()=>{
+            $("#orden").val("marca");
+        });
+
+        $("#thModelo").click(()=>{
+            $("#orden").val("modelo");
+        });
+
+        $("#thPrecio").click(()=>{
+            $("#orden").val("precio");
+        });
+
+        // $("#thAño").click(function(){
+        //     $("#orden").val("Fecha");
+        // });
+
+        $("#cargar").click(() =>{
+            console.log("cargando...");
+            $("#tabla").empty();
+            $("#tabla").html("<h3><i>Cargando datos...</i></h3>");
+
+            $.ajax({
+                type: "get",
+                url:"./bbdd.php",
+                data: { 
+                        orden: $("#orden").val(), 
+                        id: $("#filtroId").val(),
+                        // description: $("#filtroDescription").val(),
+                        marca: $("#filtroMarca").val(),
+                        modelo: $("#filtroModelo").val(),
+                        precio: $("#filtroPrecio").val()
+                    },
+                success: (respuestaServer) =>{
+                    alert(respuestaServer);
+                    console.log(respuestaServer);
+                    $("#tabla").empty();
+                    const objJson = JSON.parse(respuestaServer);
+                    objJson.Autos.forEach((valor, indice) =>
+                    {
+                        
+                        const objTr = document.createElement("tr");
+                        const tdId = document.createElement("td");
+
+                        const tdDescription = document.createElement("td");
+                        const tdMarca = document.createElement("td");
+                        const tdModelo = document.createElement("td");
+                        const tdPrecio = document.createElement("td");
+                        // var tdAño = document.createElement("td");
+                        tdId.innerHTML = valor.id;
+                        objTr.appendChild(tdId);
+                        // tdDescription.innerHTML = valor.description;
+                        // objTr.appendChild(tdId);
+                        tdMarca.innerHTML = valor.marca;
+                        objTr.appendChild(tdMarca);
+                        tdModelo.innerHTML = valor.modelo;
+                        objTr.appendChild(tdModelo);
+                        tdPrecio.innerHTML = valor.precio;
+                        objTr.appendChild(tdPrecio);
+                        // tdAño.innerHTML = valor.año;
+                        // objTr.appendChild(tdAño);
+                        $("#tabla").append(objTr);
+                    });
+                }
+            })
+
+        });
+
+        $("#vaciar").click(()=>{
+            $("#tabla").empty();
+            flag = 0;
+        })
+
+    });
+
+    // objDeportes.deportes.forEach(opc => {
+    //     var opcion = document.createElement("option");
+    //     opcion.setAttribute("value", opc.nombre);
+    //     opcion.innerText = opc.nombre;
+    //     deportes.appendChild(opcion);
+    // });
+
+    // $("#modal").click(function(){
+    //     document.getElementById("contenedor").className = "modalActivado";
+    //     $("#ventanaModal").show();
+    // });
+
+    // $("#salir").click(function(){
+    //     document.getElementById("contenedor").className = "modalDesactivado";
+    //     $("#ventanaModal").hide();
+    // });
+
+
+
+</script>
