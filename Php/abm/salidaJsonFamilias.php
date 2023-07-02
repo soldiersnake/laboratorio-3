@@ -1,14 +1,17 @@
 <?php
-include 'datosConexion.php';
+include 'datosConexionBase.php';
 
 $sql = "SELECT tipo FROM pokemon";
 
-$resultado = $dbh->query($sql);
+$resultado = mysqli_query($conexion, $sql);
 
 if ($resultado) {
-    $tipos = $resultado->fetchAll(PDO::FETCH_COLUMN);
+    $tipos = array();
+    while ($fila = mysqli_fetch_assoc($resultado)) {
+        $tipos[] = $fila['tipo'];
+    }
     echo json_encode($tipos);
 } else {
-    echo "Error al obtener los datos de tipo: " . $dbh->errorInfo()[2];
+    echo "Error al obtener los datos de tipo: " . mysqli_error($conexion);
 }
 ?>
