@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario BBDD</title>
     <style>
-
-        html, body
-        {
+        html,
+        body {
             width: 100vw;
             height: 100%;
             padding: 0;
             margin: 0;
         }
-        h2{
+
+        h2 {
             color: yellow;
         }
 
-        #contenedor
-        {
+        #contenedor {
             width: 100%;
             height: 100%;
             background-image: url('./imagenes/fondoPokemon.png');
-        background-size: cover;
-        background-position: center;
+            background-size: cover;
+            background-position: center;
         }
 
-        table
-        {
+        table {
             /* display: block; */
             display: table;
             height: 100%;
@@ -37,8 +36,8 @@
             overflow: auto;
         }
 
-        header, footer
-        {
+        header,
+        footer {
             font-weight: bold;
             background-color: black;
             height: 10%;
@@ -52,15 +51,13 @@
             position: relative;
         }
 
-        footer
-        {
+        footer {
             position: fixed;
-            bottom:0;
-            left:0;
+            bottom: 0;
+            left: 0;
         }
 
-        .th
-        {
+        .th {
             text-align: center;
             background-color: rgba(255, 0, 0, 0.774);
             padding: 10px 10px 25px 10px;
@@ -69,23 +66,19 @@
             cursor: pointer;
         }
 
-        [campo-dato = "id"]
-        {
+        [campo-dato="id"] {
             width: 10vw;
         }
 
-        [campo-dato = "marca"]
-        {
+        [campo-dato="marca"] {
             width: 30vw;
         }
 
-        [campo-dato = "modelo"]
-        {
+        [campo-dato="modelo"] {
             width: 30vw;
         }
-        
-        [campo-dato = "precio"]
-        {
+
+        [campo-dato="precio"] {
             width: 20vw;
         }
 
@@ -101,47 +94,40 @@
             font-weight: bold;
         } */
 
-        tbody tr:nth-child(odd)
-        {
+        tbody tr:nth-child(odd) {
             background-color: lavender;
         }
 
-        tbody tr:nth-child(even)
-        {
+        tbody tr:nth-child(even) {
             background-color: rgb(203, 203, 251);
         }
 
-        td
-        {
+        td {
             padding: 20px;
             box-sizing: border-box;
         }
-        .marginIzquierdo{
+
+        .marginIzquierdo {
             margin-right: 20px;
         }
 
-        @media (max-width: 900px)
-        {
+        @media (max-width: 900px) {
             /* [campo-dato = "año"]
             {
                 display: none;
             } */
 
-            [campo-dato = "precio"]
-            {
+            [campo-dato="precio"] {
                 width: 35vw;
             }
         }
 
-        @media (max-width: 600px)
-        {
-            [campo-dato = "precio"]
-            {
+        @media (max-width: 600px) {
+            [campo-dato="precio"] {
                 display: none;
             }
 
-            [campo-dato = "modelo"]
-            {
+            [campo-dato="modelo"] {
                 width: 60vw;
             }
         }
@@ -159,25 +145,25 @@
             }
         } */
 
-        button{
+        button {
             border-radius: 15px;
             background-color: white;
             font-weight: bold;
         }
-        button:hover{
+
+        button:hover {
             cursor: pointer;
             background-color: black;
             color: yellow;
             border: 4px solid yellow;
         }
-        #botones
-        {
+
+        #botones {
             position: fixed;
             right: 20px;
         }
 
-        #botones button
-        {
+        #botones button {
             padding: 10px;
             width: 100px;
             font-weight: bold;
@@ -186,13 +172,11 @@
 
         /* ////////////////////////// */
 
-        h3
-        {
+        h3 {
             margin: 0;
         }
 
-        #titulo
-        {
+        #titulo {
             background-color: black;
             color: white;
             height: 10%;
@@ -204,17 +188,17 @@
             align-items: center;
         }
 
-        .opcion
-        {
+        .opcion {
             float: left;
             height: 30%;
             width: 50%;
         }
-        thead{
+
+        thead {
             width: 100%;
         }
-        thead input
-        {
+
+        thead input {
             display: block;
             width: 100%;
             padding: 5px;
@@ -222,19 +206,18 @@
             margin: auto;
         }
 
-        button
-        {
+        button {
             padding: 5px;
         }
- 
     </style>
 </head>
+
 <body>
     <div id="contenedor">
         <header>
             <h2>ABM form's - Pokemon</h2>
             <div id="botones">
-                
+
                 <!-- <input type="text" readonly id="orden" value="Precio"> -->
                 <button id="cargar">Cargar</button>
                 <button id="vaciar">Vaciar</button>
@@ -258,15 +241,15 @@
                     <!-- <th campo-dato="año" class="th" id="thAño">Año</th> -->
                 </tr>
                 <tr>
-                    <td campo-dato="id" class="th"  ><input id="filtroId" type="text"></td>
+                    <td campo-dato="id" class="th"><input id="filtroId" type="text"></td>
                     <!-- <td campo-dato="marca" class="th"  ><input id="filtroDescription" type="text"></td> -->
-                    <td campo-dato="nombre" class="th"  ><input id="filtroNombre" type="text"></td>
-                    <td campo-dato="tipo" class="th" ><input  id="filtroTipo" type="text"></td>
-                    <td campo-dato="ataque" class="th" ><input id="filtroAtaque" type="text"></td>
-                    <td campo-dato="debilidad" class="th" ><input id="filtroDebilidad" type="text"></td>
-                    <td campo-dato="pdf" class="th" ><button class="botoncito">Pdf</button></td>
-                    <td campo-dato="modificacion" class="th" ><button class="botoncito">Modi</button></td>
-                    <td campo-dato="baja" class="th" ><button class="botoncito marginIzquierdo">Baja</button></td>
+                    <td campo-dato="nombre" class="th"><input id="filtroNombre" type="text"></td>
+                    <td campo-dato="tipo" class="th"><input id="filtroTipo" type="text"></td>
+                    <td campo-dato="ataque" class="th"><input id="filtroAtaque" type="text"></td>
+                    <td campo-dato="debilidad" class="th"><input id="filtroDebilidad" type="text"></td>
+                    <td campo-dato="pdf" class="th"><button class="botoncito">Pdf</button></td>
+                    <td campo-dato="modificacion" class="th"><button class="botoncito">Modi</button></td>
+                    <td campo-dato="baja" class="th"><button class="botoncito marginIzquierdo">Baja</button></td>
 
 
                     <!-- <td campo-dato="año" class="th" ><input id="filtroFecha" type="text"></td> -->
@@ -274,7 +257,7 @@
 
             </thead>
             <tbody id="tabla">
-    
+
             </tbody>
         </table>
         <footer>
@@ -283,10 +266,11 @@
             </h2>
         </footer>
 
-        
+
     </div>
 
 </body>
+
 </html>
 
 <script src="../jquery.js"></script>
@@ -297,25 +281,25 @@
     // var deportes = document.getElementById("deportes");
     var flag = 0;
 
-    $(document).ready(()=>{
-        
-        $("#thId").click(()=>{
+    $(document).ready(() => {
+
+        $("#thId").click(() => {
             $("#orden").val("id");
         });
 
-        $("#thDescription").click(()=>{
+        $("#thDescription").click(() => {
             $("#orden").val("description");
         });
 
-        $("#thMarca").click(()=>{
+        $("#thMarca").click(() => {
             $("#orden").val("marca");
         });
 
-        $("#thModelo").click(()=>{
+        $("#thModelo").click(() => {
             $("#orden").val("modelo");
         });
 
-        $("#thPrecio").click(()=>{
+        $("#thPrecio").click(() => {
             $("#orden").val("precio");
         });
 
@@ -323,63 +307,54 @@
         //     $("#orden").val("Fecha");
         // });
 
-        $("#cargar").click(() =>{
+        $("#cargar").click(() => {
             console.log("cargando...");
             $("#tabla").empty();
             $("#tabla").html("<h3><i>Cargando datos...</i></h3>");
 
             $.ajax({
-                type: "get",
-                url:"./bbdd.php",
-                data: { 
-                        orden: $("#orden").val(), 
-                        id: $("#filtroId").val(),
-                        // description: $("#filtroDescription").val(),
-                        marca: $("#filtroMarca").val(),
-                        modelo: $("#filtroModelo").val(),
-                        precio: $("#filtroPrecio").val()
-                    },
-                success: (respuestaServer) =>{
-                    alert(respuestaServer);
+                type: "GET",
+                url: "salidaJsonArticulos.php",
+                success: (respuestaServer) => {
                     console.log(respuestaServer);
                     $("#tabla").empty();
                     const objJson = JSON.parse(respuestaServer);
-                    objJson.Autos.forEach((valor, indice) =>
-                    {
-                        
+                    objJson.forEach((valor) => {
                         const objTr = document.createElement("tr");
-                        const tdId = document.createElement("td");
 
-                        const tdDescription = document.createElement("td");
-                        const tdMarca = document.createElement("td");
-                        const tdModelo = document.createElement("td");
-                        const tdPrecio = document.createElement("td");
-                        // var tdAño = document.createElement("td");
+                        const tdId = document.createElement("td");
                         tdId.innerHTML = valor.id;
                         objTr.appendChild(tdId);
-                        // tdDescription.innerHTML = valor.description;
-                        // objTr.appendChild(tdId);
-                        tdMarca.innerHTML = valor.marca;
-                        objTr.appendChild(tdMarca);
-                        tdModelo.innerHTML = valor.modelo;
-                        objTr.appendChild(tdModelo);
-                        tdPrecio.innerHTML = valor.precio;
-                        objTr.appendChild(tdPrecio);
-                        // tdAño.innerHTML = valor.año;
-                        // objTr.appendChild(tdAño);
+
+                        const tdNombre = document.createElement("td");
+                        tdNombre.innerHTML = valor.nombre;
+                        objTr.appendChild(tdNombre);
+
+                        const tdTipo = document.createElement("td");
+                        tdTipo.innerHTML = valor.tipo;
+                        objTr.appendChild(tdTipo);
+
+                        const tdAtaque = document.createElement("td");
+                        tdAtaque.innerHTML = valor.ataque_principal;
+                        objTr.appendChild(tdAtaque);
+
+                        const tdDebilidad = document.createElement("td");
+                        tdDebilidad.innerHTML = valor.debilidad;
+                        objTr.appendChild(tdDebilidad);
+
                         $("#tabla").append(objTr);
                     });
                 }
-            })
-
+            });
         });
 
-        $("#vaciar").click(()=>{
-            $("#tabla").empty();
-            flag = 0;
-        })
-
     });
+
+    $("#vaciar").click(() => {
+        $("#tabla").empty();
+        flag = 0;
+    })
+
 
     // objDeportes.deportes.forEach(opc => {
     //     var opcion = document.createElement("option");
