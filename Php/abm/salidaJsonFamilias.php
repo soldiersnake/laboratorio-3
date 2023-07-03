@@ -12,6 +12,7 @@ if ($resultado) {
     }
     echo json_encode($tipos);
 } else {
-    echo "Error al obtener los datos de tipo: " . mysqli_error($conexion);
+    echo json_encode([]);
 }
+
 ?>

@@ -113,6 +113,7 @@
         </div>
         <div class="formulario-modal">
             <form action="modi.php" method="post" id="myFormModi">
+                <input type="hidden" id="idModi" name="idModi">
                 <div class="inputsForm">
                     <label for="nombreModi">Nombre:</label>
                     <input type="text" id="nombreModi" name="nombreModi" required>
@@ -370,6 +371,9 @@
     function btnModi(event) {
         const idPokemon = event.target.getAttribute("data-id");
 
+        // Asignar el id del Pokémon al campo oculto en el formulario de modificación
+        $("#idModi").val(idPokemon);
+
         // Obtén los atributos del Pokémon mediante una petición AJAX
         $.ajax({
             type: "POST",
@@ -388,7 +392,43 @@
 
                 // Mostrar la ventana modal de modificación
                 $("#modalModi").show();
-                console.log(data)
+            }
+        });
+    }
+
+    // ENVIO DE LA MODIFICACIÓN
+    function modificarPokemon(event) {
+        event.preventDefault();  // Evita el envío normal del formulario
+
+        var idPokemon = $("#idModi").val();
+        var nombre = $("#nombreModi").val();
+        var tipo = $("#filtroTipoModalModi").val();
+        var ataque = $("#ataqueModi").val();
+        var debilidad = $("#debilidadModi").val();
+        // Para la imagen necesitarás procesarla adecuadamente en tu servidor.
+
+        $.ajax({
+            type: "POST",
+            url: "modi.php",
+            data: { id: idPokemon, nombre: nombre, tipo: tipo, ataque: ataque, debilidad: debilidad },
+            success: function (respuestaServer) {
+                // Aquí puedes procesar la respuesta del servidor, por ejemplo:
+                console.log(respuestaServer);
+                if (respuestaServer === "Actualizado con éxito") {
+                    // Cierra el modal y actualiza la lista de Pokémons
+                    $("#modalModi").hide();
+                    cargarPokemons();  // Suponiendo que tienes una función que carga la lista de Pokémons
+                    if (respuestaServer === "Actualizado con éxito") {
+                        // Cierra el modal y actualiza la lista de Pokémons
+                        $("#modalModi").hide();
+                        location.reload();
+                        // Disparar el evento clic del botón "Cargar"
+                        $("#cargar").trigger("click");
+                    }
+                } else {
+                    // Muestra un mensaje de error
+                    alert("Error al actualizar el Pokémon: " + respuestaServer);
+                }
             }
         });
     }
