@@ -6,210 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario BBDD</title>
-    <style>
-        html,
-        body {
-            width: 100vw;
-            height: 100%;
-            padding: 0;
-            margin: 0;
-        }
-
-        h2 {
-            color: yellow;
-        }
-
-        #contenedor {
-            width: 100%;
-            height: 100%;
-            background-image: url('./imagenes/fondoPokemon.png');
-            background-size: cover;
-            background-position: center;
-        }
-
-        table {
-            /* display: block; */
-            display: table;
-            height: 100%;
-            width: 100vw;
-            border-collapse: collapse;
-            overflow: auto;
-        }
-
-        header,
-        footer {
-            font-weight: bold;
-            background-color: black;
-            height: 10%;
-            width: 100%;
-            color: white;
-            padding: 30px;
-            box-sizing: border-box;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-        }
-
-        .th {
-            text-align: center;
-            background-color: rgba(255, 0, 0, 0.774);
-            padding: 10px 10px 25px 10px;
-            box-sizing: border-box;
-            border-right: 2px solid orange;
-            cursor: pointer;
-        }
-
-        [campo-dato="id"] {
-            width: 10vw;
-        }
-
-        [campo-dato="marca"] {
-            width: 30vw;
-        }
-
-        [campo-dato="modelo"] {
-            width: 30vw;
-        }
-
-        [campo-dato="precio"] {
-            width: 20vw;
-        }
-
-        /* [campo-dato = "año"]
-        {
-            width: 10vw;
-        } */
-
-        /* [campo-dato = "deporte"]
-        {
-            width: 20vw;
-            color: darkslateblue;
-            font-weight: bold;
-        } */
-
-        tbody tr:nth-child(odd) {
-            background-color: rgb(220, 227, 126);
-        }
-
-        tbody tr:nth-child(even) {
-            background-color: rgb(229, 102, 79);
-        }
-
-        td {
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .marginIzquierdo {
-            margin-right: 20px;
-        }
-
-        @media (max-width: 900px) {
-            /* [campo-dato = "año"]
-            {
-                display: none;
-            } */
-
-            [campo-dato="precio"] {
-                width: 35vw;
-            }
-        }
-
-        @media (max-width: 600px) {
-            [campo-dato="precio"] {
-                display: none;
-            }
-
-            [campo-dato="modelo"] {
-                width: 60vw;
-            }
-        }
-
-        /* @media (max-width: 600px)
-        {
-            [campo-dato = "precio"]
-            {
-                display: none;
-            }
-
-            [campo-dato = "deporte"]
-            {
-                width: 85vw;
-            }
-        } */
-
-        button {
-            border-radius: 15px;
-            background-color: white;
-            font-weight: bold;
-        }
-
-        button:hover {
-            cursor: pointer;
-            background-color: black;
-            color: yellow;
-            border: 4px solid yellow;
-        }
-
-        #botones {
-            position: fixed;
-            right: 20px;
-        }
-
-        #botones button {
-            padding: 10px;
-            width: 100px;
-            font-weight: bold;
-        }
-
-
-        /* ////////////////////////// */
-
-        h3 {
-            margin: 0;
-        }
-
-        #titulo {
-            background-color: black;
-            color: white;
-            height: 10%;
-            width: 100%;
-            padding-left: 10px;
-            box-sizing: border-box;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .opcion {
-            float: left;
-            height: 30%;
-            width: 50%;
-        }
-
-        thead {
-            width: 100%;
-        }
-
-        thead input {
-            display: block;
-            width: 100%;
-            padding: 5px;
-            box-sizing: border-box;
-            margin: auto;
-        }
-
-        button {
-            padding: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -219,10 +16,10 @@
             <div id="botones">
 
                 <!-- <input type="text" readonly id="orden" value="Precio"> -->
-                <button id="cargar">Cargar</button>
-                <button id="vaciar">Vaciar</button>
-                <button id="limpiarFiltros">Limpiar</button>
-                <button id="altaRegistro">Alta</button>
+                <button class="btnHeader" id="cargar">Cargar</button>
+                <button class="btnHeader" id="vaciar">Vaciar</button>
+                <button class="btnHeader" id="limpiarFiltros">Limpiar</button>
+                <button class="btnHeader" id="alta">Alta</button>
             </div>
         </header>
         <table>
@@ -269,6 +66,45 @@
 
     </div>
 
+    <!-- VENTANA MODAL -->
+    <div class="VentanaModal" id="modal">
+        <div class="headerVentanaModal">
+            <h3 class="itemMid">Formulario de alta</h3>
+            <button class="btnCerrarModal">X</button>
+        </div>
+        <div class="formulario-modal">
+            <form action="" method="get" id="myForm">
+                <div class="inputsForm">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="inputsForm">
+                    <label for="familia">Tipo:</label>
+                    <select name="filtroTipo" id="filtroTipoModal" required>
+                        <option value="">Selecciona una opcion</option>
+
+                    </select>
+                </div>
+                <div class="inputsForm">
+                    <label for="ataque">Ataque Principal:</label>
+                    <input type="txt" id="ataque" name="ataque" required>
+                </div>
+                <div class="inputsForm" style="margin-top: 1%;">
+                    <label for="debilidad">Debilidad:</label>
+                    <input type="text" id="debilidad" name="debilidad" required>
+                </div>
+                <div class="inputsForm" style="margin-top: 1%;">
+                    <label for="pdf">Imagen:</label>
+                    <input type="file" id="pdf" name="pdf" required>
+                </div>
+
+
+                <button class="btnForm" type="submit" id="btnEnviar">
+                    Enviar
+                </button>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>
@@ -284,46 +120,45 @@
         $("#thId").click(() => {
             $("#orden").val("id");
         });
-
         $("#thDescription").click(() => {
             $("#orden").val("description");
         });
-
         $("#thMarca").click(() => {
             $("#orden").val("marca");
         });
-
         $("#thModelo").click(() => {
             $("#orden").val("modelo");
         });
-
         $("#thPrecio").click(() => {
             $("#orden").val("precio");
         });
 
         // Realizar la petición AJAX para obtener los tipos
         $.ajax({
-        type: "GET",
-        url: "salidaJsonFamilias.php",
-        success: (respuestaServer) => {
-            // Convertir la respuesta en un arreglo de tipos
-            const tipos = JSON.parse(respuestaServer);
+            type: "GET",
+            url: "salidaJsonFamilias.php",
+            success: (respuestaServer) => {
+                // Convertir la respuesta en un arreglo de tipos
+                const tipos = JSON.parse(respuestaServer);
+                // Eliminar duplicados y ordenar los tipos alfabéticamente
+                const tiposUnicos = [...new Set(tipos)].sort();
+                // Mostrar los tipos en una alerta
+                alert("Tipos: " + tiposUnicos.join(", "));
+                // Llenar el select del filtroTipo con los tipos únicos
+                const filtroTipo = $("#filtroTipo");
+                filtroTipo.empty();
+                tiposUnicos.forEach((tipo) => {
+                    filtroTipo.append($("<option></option>").text(tipo));
+                });
 
-            // Eliminar duplicados y ordenar los tipos alfabéticamente
-            const tiposUnicos = [...new Set(tipos)].sort();
+                const filtroTipoModal = $("#filtroTipoModal");
+                filtroTipoModal.empty();
+                tiposUnicos.forEach((tipo) => {
+                    filtroTipoModal.append($("<option></option>").text(tipo));
+                });
 
-            // Mostrar los tipos en una alerta
-            alert("Tipos: " + tiposUnicos.join(", "));
-
-            // Llenar el select del filtroTipo con los tipos únicos
-            const filtroTipo = $("#filtroTipo");
-            tiposUnicos.forEach((tipo) => {
-                filtroTipo.append($("<option></option>").text(tipo));
-            });
-        }
-    });
-
-
+            }
+        });
 
         $("#cargar").click(() => {
             console.log("cargando...");
@@ -355,10 +190,8 @@
 
                             // Obtener los tipos de la respuesta del servidor
                             const tipos = objJson.map((valor) => valor.tipo);
-
                             // Eliminar duplicados y ordenar los tipos alfabéticamente
                             const tiposUnicos = [...new Set(tipos)].sort();
-
                             // Llenar el select del filtroTipo con los tipos únicos
                             const filtroTipo = $("#filtroTipo");
                             filtroTipo.empty();
@@ -373,23 +206,18 @@
                                 const tdId = document.createElement("td");
                                 tdId.innerHTML = valor.id;
                                 objTr.appendChild(tdId);
-
                                 const tdNombre = document.createElement("td");
                                 tdNombre.innerHTML = valor.nombre;
                                 objTr.appendChild(tdNombre);
-
                                 const tdTipo = document.createElement("td");
                                 tdTipo.innerHTML = valor.tipo;
                                 objTr.appendChild(tdTipo);
-
                                 const tdAtaque = document.createElement("td");
                                 tdAtaque.innerHTML = valor.ataque_principal;
                                 objTr.appendChild(tdAtaque);
-
                                 const tdDebilidad = document.createElement("td");
                                 tdDebilidad.innerHTML = valor.debilidad;
                                 objTr.appendChild(tdDebilidad);
-
                                 const tdPdf = document.createElement("td");
                                 const botonPdf = document.createElement("button");
                                 botonPdf.innerText = "PDF";
@@ -417,10 +245,19 @@
                     });
                 }
             });
-
-
-
         });
+
+        // ACCION DE VENTANA MODAL
+        $("#alta").click(() => {
+            $("#contenedor").addClass("modal-open");
+            $("#modal").addClass('.mostrar');
+            $("#modal").show();
+        });
+        $(".btnCerrarModal").click(() => {
+            $("#contenedor").removeClass("modal-open");
+            $(".VentanaModal").hide();
+        });
+
 
     });
 
@@ -428,40 +265,17 @@
         $("#tabla").empty();
         flag = 0;
     })
-
     function btnPDF() {
         // Acción del botón PDF
         console.log("Botón PDF clickeado");
     }
-
     function btnModi() {
         // Acción del botón Modi
         console.log("Botón Modi clickeado");
     }
-
     function btnBaja() {
         // Acción del botón Baja
         console.log("Botón Baja clickeado");
     }
-
-
-    // objDeportes.deportes.forEach(opc => {
-    //     var opcion = document.createElement("option");
-    //     opcion.setAttribute("value", opc.nombre);
-    //     opcion.innerText = opc.nombre;
-    //     deportes.appendChild(opcion);
-    // });
-
-    // $("#modal").click(function(){
-    //     document.getElementById("contenedor").className = "modalActivado";
-    //     $("#ventanaModal").show();
-    // });
-
-    // $("#salir").click(function(){
-    //     document.getElementById("contenedor").className = "modalDesactivado";
-    //     $("#ventanaModal").hide();
-    // });
-
-
 
 </script>
