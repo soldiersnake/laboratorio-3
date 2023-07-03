@@ -73,15 +73,14 @@
             <button class="btnCerrarModal">X</button>
         </div>
         <div class="formulario-modal">
-            <form action="" method="get" id="myForm">
+            <form action="alta.php" method="post" id="myForm">
                 <div class="inputsForm">
                     <label for="nombre">Nombre:</label>
                     <input type="text" id="nombre" name="nombre" required>
                 </div>
                 <div class="inputsForm">
-                    <label for="familia">Tipo:</label>
-                    <select name="filtroTipo" id="filtroTipoModal" required>
-                        <option value="">Selecciona una opcion</option>
+                    <label for="tipo">Tipo:</label>
+                    <select name="tipo" id="filtroTipoModal" required>
 
                     </select>
                 </div>
@@ -95,12 +94,48 @@
                 </div>
                 <div class="inputsForm" style="margin-top: 1%;">
                     <label for="pdf">Imagen:</label>
-                    <input type="file" id="pdf" name="pdf" required>
+                    <input type="file" id="pdf" name="pdf">
                 </div>
 
 
-                <button class="btnForm" type="submit" id="btnEnviar">
+                <button class="btnForm" type="submit" id="btnEnviar" onclick="altaPokemon(event)">
                     Enviar
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- VENTANA MODAL MODIFICACION-->
+    <div class="VentanaModal" id="modalModi">
+        <div class="headerVentanaModal">
+            <h3 class="itemMid">Formulario de Modificacion</h3>
+            <button class="btnCerrarModal">X</button>
+        </div>
+        <div class="formulario-modal">
+            <form action="modi.php" method="post" id="myFormModi">
+                <div class="inputsForm">
+                    <label for="nombreModi">Nombre:</label>
+                    <input type="text" id="nombreModi" name="nombreModi" required>
+                </div>
+                <div class="inputsForm">
+                    <label for="tipoModi">Tipo:</label>
+                    <select name="tipoModi" id="filtroTipoModalModi">
+                    </select>
+                </div>
+                <div class="inputsForm">
+                    <label for="ataqueModi">Ataque Principal:</label>
+                    <input type="txt" id="ataqueModi" name="ataqueModi" required>
+                </div>
+                <div class="inputsForm" style="margin-top: 1%;">
+                    <label for="debilidadModi">Debilidad:</label>
+                    <input type="text" id="debilidadModi" name="debilidadModi" required>
+                </div>
+                <div class="inputsForm" style="margin-top: 1%;">
+                    <label for="pdfModi">Imagen:</label>
+                    <input type="file" id="pdfModi" name="pdfModi">
+                </div>
+                <button class="btnForm" type="submit" id="btnEnviarModi" onclick="modificarPokemon(event)">
+                    Enviar Modificacion
                 </button>
             </form>
         </div>
@@ -108,9 +143,7 @@
 </body>
 
 </html>
-
 <script src="../jquery.js"></script>
-
 <script>
 
     var flag = 0;
@@ -228,6 +261,7 @@
                                 const tdModi = document.createElement("td");
                                 const botonModi = document.createElement("button");
                                 botonModi.innerText = "Modi";
+                                botonModi.setAttribute("data-id", valor.id);
                                 botonModi.addEventListener("click", btnModi);
                                 tdModi.appendChild(botonModi);
                                 objTr.appendChild(tdModi);
@@ -235,7 +269,7 @@
                                 const tdBaja = document.createElement("td");
                                 const botonBaja = document.createElement("button");
                                 botonBaja.innerText = "Baja";
-                                botonBaja.addEventListener("click", btnBaja);
+                                botonBaja.addEventListener("click", () => btnBaja(valor.id));
                                 tdBaja.appendChild(botonBaja);
                                 objTr.appendChild(tdBaja);
 
@@ -247,6 +281,65 @@
             });
         });
 
+        // ALTA CRUD
+        $("#myForm").submit((event) => {
+            event.preventDefault(); // Evita que el formulario se envíe automáticamente
+
+            // Obtén los valores de los campos del formulario
+            const nombre = $("#nombre").val();
+            const tipo = $("#filtroTipo").val();
+            const ataque = $("#ataque").val();
+            const debilidad = $("#debilidad").val();
+
+            // Construye el mensaje de confirmación
+            const mensaje = `¿Deseas cargar los siguientes datos?\n\nNombre: ${nombre}\nTipo: ${tipo}\nAtaque: ${ataque}\nDebilidad: ${debilidad}`;
+
+            // Muestra la confirmación y procesa la respuesta
+            if (confirm(mensaje)) {
+                // El usuario hizo clic en "Aceptar"
+                // Envía el formulario para realizar el alta en la base de datos
+                const data = new FormData($('#myForm')[0]);
+                $.ajax({
+                    type: 'POST',
+                    method: 'post',
+                    enctype: 'multipart/form-data',
+                    url: 'alta.php',
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    data: data,
+                    success: (respuestaServer, estado) => {
+                        // Aquí puedes realizar las acciones necesarias después del alta exitosa
+                        console.log(respuestaServer);
+
+                        // Redirecciona al index.html
+                        window.location.href = "index.html";
+                    }
+                });
+            } else {
+                alert('No se cargara el pokemon');
+            }
+        });
+
+
+        // BAJA
+        function btnBaja(idPokemon) {
+            if (confirm("¿Deseas eliminar este Pokémon?")) {
+                $.ajax({
+                    type: 'POST',
+                    url: 'baja.php',
+                    data: { id: idPokemon },
+                    success: (respuestaServer, estado) => {
+                        console.log(respuestaServer);
+                        // Aquí puedes realizar las acciones necesarias después de la baja exitosa
+
+                        // Disparar el evento clic del botón "Cargar"
+                        $("#cargar").trigger("click");
+                    }
+                });
+            }
+        }
+
         // ACCION DE VENTANA MODAL
         $("#alta").click(() => {
             $("#contenedor").addClass("modal-open");
@@ -257,25 +350,47 @@
             $("#contenedor").removeClass("modal-open");
             $(".VentanaModal").hide();
         });
-
-
+        // ACCION DE VENTANA MODAL MODIFICACION
+        $("#modalModi .btnCerrarModal").click(() => {
+            $("#contenedor").removeClass("modal-open");
+            $("#modalModi").hide();
+        });
     });
 
     $("#vaciar").click(() => {
         $("#tabla").empty();
         flag = 0;
-    })
+    });
     function btnPDF() {
         // Acción del botón PDF
         console.log("Botón PDF clickeado");
-    }
-    function btnModi() {
-        // Acción del botón Modi
-        console.log("Botón Modi clickeado");
-    }
-    function btnBaja() {
-        // Acción del botón Baja
-        console.log("Botón Baja clickeado");
+    };
+
+    // MODIFICACION
+    function btnModi(event) {
+        const idPokemon = event.target.getAttribute("data-id");
+
+        // Obtén los atributos del Pokémon mediante una petición AJAX
+        $.ajax({
+            type: "POST",
+            url: "modi.php",
+            data: { id: idPokemon },
+            success: function (respuestaServer) {
+                const pokemon = JSON.parse(respuestaServer);
+
+                // Llenar los campos de la ventana modal de modificación con los atributos del Pokémon
+                $("#nombreModi").val(pokemon.nombre);
+                $("#filtroTipoModalModi").find('option').filter(function () {
+                    return $(this).text() === pokemon.tipo;
+                }).prop('selected', true);
+                $("#ataqueModi").val(pokemon.ataque_principal);
+                $("#debilidadModi").val(pokemon.debilidad);
+
+                // Mostrar la ventana modal de modificación
+                $("#modalModi").show();
+                console.log(data)
+            }
+        });
     }
 
 </script>

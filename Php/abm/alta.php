@@ -11,6 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (mysqli_query($conexion, $sql)) {
         echo "Registro insertado correctamente";
+        // Redireccionar a index.html
+        header("Location: index.html");
+        exit();
     } else {
         echo "Error al insertar el registro: " . mysqli_error($conexion);
     }

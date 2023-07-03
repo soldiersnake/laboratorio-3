@@ -8,6 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (mysqli_query($conexion, $sql)) {
         echo "Registro eliminado correctamente";
+        // Redireccionar a index.html
+        header("Location: index.html");
+        exit();
     } else {
         echo "Error al eliminar el registro: " . mysqli_error($conexion);
     }

@@ -3,17 +3,18 @@ include 'datosConexionBase.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = $_POST['id'];
-    $nombre = $_POST['nombre'];
-    $tipo = $_POST['tipo'];
-    $ataque = $_POST['ataque'];
-    $debilidad = $_POST['debilidad'];
 
-    $sql = "UPDATE pokemon SET nombre='$nombre', tipo='$tipo', ataque_principal='$ataque', debilidad='$debilidad' WHERE id = '$id'";
+    // Consultar la base de datos para obtener los atributos del Pokémon con el ID proporcionado
+    $sql = "SELECT * FROM pokemon WHERE id = '$id'";
+    $resultado = mysqli_query($conexion, $sql);
 
-    if (mysqli_query($conexion, $sql)) {
-        echo "Registro actualizado correctamente";
+    if (mysqli_num_rows($resultado) > 0) {
+        // El Pokémon existe en la base de datos
+        $pokemon = mysqli_fetch_assoc($resultado);
+        echo json_encode($pokemon);
     } else {
-        echo "Error al actualizar el registro: " . mysqli_error($conexion);
+        // El Pokémon no existe en la base de datos
+        echo json_encode([]);
     }
 }
 
