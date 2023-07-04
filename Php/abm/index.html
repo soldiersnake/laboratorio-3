@@ -141,6 +141,7 @@
             </form>
         </div>
     </div>
+
 </body>
 
 </html>
@@ -191,6 +192,13 @@
                     filtroTipoModal.append($("<option></option>").text(tipo));
                 });
 
+                // Llenar el select del filtroTipoModalModi con los tipos únicos
+                const filtroTipoModalModi = $("#filtroTipoModalModi");
+                filtroTipoModalModi.empty();
+                tiposUnicos.forEach((tipo) => {
+                    filtroTipoModalModi.append($("<option></option>").text(tipo));
+                });
+
             }
         });
 
@@ -205,23 +213,18 @@
                 success: (respuestaServer) => {
                     const opcionesTipo = $("#filtroTipo");
                     opcionesTipo.empty(); // Limpiar las opciones existentes
-
                     // Agregar las opciones obtenidas del servidor
                     opcionesTipo.append(respuestaServer);
                     alert(respuestaServer);
-
                     console.log("cargando...");
                     $("#tabla").empty();
                     $("#tabla").html("<h3><i>Cargando datos...</i></h3>");
-
                     $.ajax({
                         type: "GET",
                         url: "salidaJsonArticulos.php",
                         success: (respuestaServer) => {
                             console.log(respuestaServer);
-
                             const objJson = JSON.parse(respuestaServer);
-
                             // Obtener los tipos de la respuesta del servidor
                             const tipos = objJson.map((valor) => valor.tipo);
                             // Eliminar duplicados y ordenar los tipos alfabéticamente
@@ -232,11 +235,9 @@
                             tiposUnicos.forEach((tipo) => {
                                 filtroTipo.append($("<option></option>").text(tipo));
                             });
-
                             $("#tabla").empty();
                             objJson.forEach((valor) => {
                                 const objTr = document.createElement("tr");
-
                                 const tdId = document.createElement("td");
                                 tdId.innerHTML = valor.id;
                                 objTr.appendChild(tdId);
@@ -258,7 +259,6 @@
                                 botonPdf.addEventListener("click", btnPDF);
                                 tdPdf.appendChild(botonPdf);
                                 objTr.appendChild(tdPdf);
-
                                 const tdModi = document.createElement("td");
                                 const botonModi = document.createElement("button");
                                 botonModi.innerText = "Modi";
@@ -266,14 +266,12 @@
                                 botonModi.addEventListener("click", btnModi);
                                 tdModi.appendChild(botonModi);
                                 objTr.appendChild(tdModi);
-
                                 const tdBaja = document.createElement("td");
                                 const botonBaja = document.createElement("button");
                                 botonBaja.innerText = "Baja";
                                 botonBaja.addEventListener("click", () => btnBaja(valor.id));
                                 tdBaja.appendChild(botonBaja);
                                 objTr.appendChild(tdBaja);
-
                                 $("#tabla").append(objTr);
                             });
                         }
@@ -332,8 +330,6 @@
                     data: { id: idPokemon },
                     success: (respuestaServer, estado) => {
                         console.log(respuestaServer);
-                        // Aquí puedes realizar las acciones necesarias después de la baja exitosa
-
                         // Disparar el evento clic del botón "Cargar"
                         $("#cargar").trigger("click");
                     }
@@ -351,10 +347,13 @@
             $("#contenedor").removeClass("modal-open");
             $(".VentanaModal").hide();
         });
-        // ACCION DE VENTANA MODAL MODIFICACION
+        // ACCION DE VENTANA MODALMODIFICACION
         $("#modalModi .btnCerrarModal").click(() => {
             $("#contenedor").removeClass("modal-open");
             $("#modalModi").hide();
+        });
+        $("#btnEnviarModi").click(() => {
+            $("#contenedor").removeClass("modal-open");
         });
     });
 
@@ -367,13 +366,11 @@
         console.log("Botón PDF clickeado");
     };
 
-    // MODIFICACION
+    // cargo MODIFICACION
     function btnModi(event) {
         const idPokemon = event.target.getAttribute("data-id");
-
         // Asignar el id del Pokémon al campo oculto en el formulario de modificación
         $("#idModi").val(idPokemon);
-
         // Obtén los atributos del Pokémon mediante una petición AJAX
         $.ajax({
             type: "POST",
@@ -381,7 +378,6 @@
             data: { id: idPokemon },
             success: function (respuestaServer) {
                 const pokemon = JSON.parse(respuestaServer);
-
                 // Llenar los campos de la ventana modal de modificación con los atributos del Pokémon
                 $("#nombreModi").val(pokemon.nombre);
                 $("#filtroTipoModalModi").find('option').filter(function () {
@@ -389,8 +385,8 @@
                 }).prop('selected', true);
                 $("#ataqueModi").val(pokemon.ataque_principal);
                 $("#debilidadModi").val(pokemon.debilidad);
-
-                // Mostrar la ventana modal de modificación
+                // Mostrar la ventana modal de modificación aqui
+                $("#contenedor").addClass("modal-open");
                 $("#modalModi").show();
             }
         });
@@ -406,7 +402,6 @@
         var ataque = $("#ataqueModi").val();
         var debilidad = $("#debilidadModi").val();
         // Para la imagen necesitarás procesarla adecuadamente en tu servidor.
-
         $.ajax({
             type: "POST",
             url: "modi.php",
@@ -431,6 +426,8 @@
                 }
             }
         });
+        // Disparar el evento clic del botón "Cargar"
+        $("#cargar").trigger("click");
     }
 
 </script>
