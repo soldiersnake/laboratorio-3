@@ -73,7 +73,7 @@
             <button class="btnCerrarModal">X</button>
         </div>
         <div class="formulario-modal">
-            <form action="alta.php" method="post" id="myForm">
+            <form action="alta.php" method="post" id="myForm" enctype="multipart/form-data">
                 <div class="inputsForm">
                     <label for="nombre">Nombre:</label>
                     <input type="text" id="nombre" name="nombre" required>
@@ -94,7 +94,7 @@
                 </div>
                 <div class="inputsForm" style="margin-top: 1%;">
                     <label for="pdf">Imagen:</label>
-                    <input type="file" id="pdf" name="pdf">
+                    <input type="file" id="pdfInput" name="pdf" accept=".pdf">
                 </div>
 
 
@@ -141,6 +141,21 @@
             </form>
         </div>
     </div>
+
+    <!-- VENTANA MODAL DE IFRAME -->
+    <div class="VentanaModal" id="modalIframe">
+        <div class="headerVentanaModal">
+            <h3 class="itemMid">Iframe de PDF</h3>
+            <button class="btnCerrarModal">X</button>
+        </div>
+        <div class="formulario-modal">
+            <iframe src="" frameborder="0"></iframe>
+                <button class="cerrarIframe">
+                    CERRAR
+                </button>
+        </div>
+    </div>
+
 
 </body>
 
@@ -284,14 +299,8 @@
         $("#myForm").submit((event) => {
             event.preventDefault(); // Evita que el formulario se envíe automáticamente
 
-            // Obtén los valores de los campos del formulario
-            const nombre = $("#nombre").val();
-            const tipo = $("#filtroTipo").val();
-            const ataque = $("#ataque").val();
-            const debilidad = $("#debilidad").val();
-
             // Construye el mensaje de confirmación
-            const mensaje = `¿Deseas cargar los siguientes datos?\n\nNombre: ${nombre}\nTipo: ${tipo}\nAtaque: ${ataque}\nDebilidad: ${debilidad}`;
+            const mensaje = `¿Deseas cargar los siguientes datos?`;
 
             // Muestra la confirmación y procesa la respuesta
             if (confirm(mensaje)) {
@@ -362,9 +371,16 @@
         flag = 0;
     });
     function btnPDF() {
-        // Acción del botón PDF
+        $("#contenedor").addClass("modal-open");
+        $("#modalIframe").addClass('.mostrar');
+        $("#modalIframe").show();
         console.log("Botón PDF clickeado");
     };
+
+    $(".cerrarIframe").click(()=>{
+        $("#modalIframe").hide();
+        $("#contenedor").removeClass("modal-open");
+    })
 
     // cargo MODIFICACION
     function btnModi(event) {
