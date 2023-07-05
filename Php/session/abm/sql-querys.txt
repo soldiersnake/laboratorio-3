@@ -1,0 +1,232 @@
+CREATE TABLE pokemon
+(
+id INT AUTO_INCREMENT PRIMARY KEY,
+nombre VARCHAR(30),
+tipo VARCHAR(30),
+ataque_principal VARCHAR(30),
+debilidad VARCHAR(30)
+);
+
+INSERT INTO pokemon (nombre, tipo, ataque_principal, debilidad) VALUES
+('Bulbasaur', 'Planta', 'Placaje', 'Fuego'),
+('Ivysaur', 'Planta', 'Hoja Afilada', 'Fuego'),
+('Venusaur', 'Planta', 'Látigo Cepa', 'Fuego'),
+('Charmander', 'Fuego', 'Llama', 'Agua'),
+('Charmeleon', 'Fuego', 'Ascuas', 'Agua'),
+('Charizard', 'Fuego', 'Lanzallamas', 'Agua'),
+('Squirtle', 'Agua', 'Burbuja', 'Planta'),
+('Wartortle', 'Agua', 'Acua Cola', 'Planta'),
+('Blastoise', 'Agua', 'Hidrobomba', 'Planta'),
+('Caterpie', 'Bicho', 'Placaje', 'Fuego'),
+('Metapod', 'Bicho', 'Duro Ataque', 'Fuego'),
+('Butterfree', 'Bicho', 'Confusión', 'Eléctrico'),
+('Weedle', 'Bicho', 'Picadura', 'Fuego'),
+('Kakuna', 'Bicho', 'Doblebofetón', 'Fuego'),
+('Beedrill', 'Bicho', 'Ataque Furia', 'Fuego'),
+('Pidgey', 'Normal/Volador', 'Tornado', 'Eléctrico'),
+('Pidgeotto', 'Normal/Volador', 'Ataque Ala', 'Eléctrico'),
+('Pidgeot', 'Normal/Volador', 'Vendaval', 'Eléctrico'),
+('Rattata', 'Normal', 'Ataque Rápido', 'Lucha'),
+('Raticate', 'Normal', 'Hipercolmillo', 'Lucha'),
+('Spearow', 'Normal/Volador', 'Picotazo', 'Eléctrico'),
+('Fearow', 'Normal/Volador', 'Ataque Aéreo', 'Eléctrico'),
+('Ekans', 'Veneno', 'Mordisco', 'Psíquico'),
+('Arbok', 'Veneno', 'Carga Tóxica', 'Psíquico'),
+('Pikachu', 'Eléctrico', 'Impactrueno', 'Tierra'),
+('Raichu', 'Eléctrico', 'Electrocañón', 'Tierra'),
+('Sandshrew', 'Tierra', 'Raspado', 'Agua'),
+('Sandslash', 'Tierra', 'Excavar', 'Agua'),
+('Nidoran♀', 'Veneno', 'Picotazo Veneno', 'Psíquico'),
+('Nidorina', 'Veneno', 'Bofetón Lodo', 'Psíquico'),
+('Nidoqueen', 'Veneno/Tierra', 'Terremoto', 'Agua'),
+('Nidoran♂', 'Veneno', 'Picotazo Veneno', 'Psíquico'),
+('Nidorino', 'Veneno', 'Doble Patada', 'Psíquico'),
+('Nidoking', 'Veneno/Tierra', 'Megacuerno', 'Agua'),
+('Clefairy', 'Hada', 'Canto', 'Acero'),
+('Clefable', 'Hada', 'Brillo Mágico', 'Acero'),
+('Vulpix', 'Fuego', 'Llama Embravecida', 'Agua'),
+('Ninetales', 'Fuego', 'Pulso Ígneo', 'Agua'),
+('Jigglypuff', 'Normal/Hada', 'Dulce Voz', 'Acero'),
+('Wigglytuff', 'Normal/Hada', 'Hiperrayo', 'Acero'),
+('Zubat', 'Veneno/Volador', 'Ataque Ala', 'Eléctrico'),
+('Golbat', 'Veneno/Volador', 'Ataque Aéreo', 'Eléctrico'),
+('Oddish', 'Planta/Veneno', 'Placaje', 'Fuego'),
+('Gloom', 'Planta/Veneno', 'Absorber', 'Fuego'),
+('Vileplume', 'Planta/Veneno', 'Polvo Veneno', 'Fuego'),
+('Paras', 'Bicho/Planta', 'Arañazo', 'Fuego'),
+('Parasect', 'Bicho/Planta', 'Megagolpe', 'Fuego'),
+('Venonat', 'Bicho/Veneno', 'Confusión', 'Fuego'),
+('Venomoth', 'Bicho/Veneno', 'Polvo Veneno', 'Fuego');
+
+
+//futura app pokemon
+CREATE TABLE pokemon (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(50),
+  tipo VARCHAR(50),
+  ataque int(8)
+);
+
+CREATE TABLE ataque (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  ataqueINT,
+  nombre VARCHAR(50),
+  FOREIGN KEY (ataque_id) REFERENCES ataque(id)
+);
+
+
+-- Insertar un pokémon y sus ataques
+INSERT INTO pokemon (nombre, tipo) VALUES ('Bulbasaur', 'Planta/Veneno');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (1, 'Placaje');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (1, 'Látigo cepa');
+
+-- Insertar otro pokémon y sus ataques
+INSERT INTO pokemon (nombre, tipo) VALUES ('Charmander', 'Fuego');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (2, 'Placaje');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (2, 'Ascuas');
+
+-- Insertar los primeros 25 pokémon y sus ataques
+-- Pokémon 1: Bulbasaur
+INSERT INTO pokemon (nombre, tipo) VALUES ('Bulbasaur', 'Planta/Veneno');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (1, 'Placaje');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (1, 'Látigo cepa');
+
+-- Pokémon 2: Ivysaur
+INSERT INTO pokemon (nombre, tipo) VALUES ('Ivysaur', 'Planta/Veneno');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (2, 'Placaje');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (2, 'Látigo cepa');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (2, 'Hoja afilada');
+
+-- Pokémon 3: Venusaur
+INSERT INTO pokemon (nombre, tipo) VALUES ('Venusaur', 'Planta/Veneno');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (3, 'Placaje');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (3, 'Látigo cepa');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (3, 'Hoja afilada');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (3, 'Rayo solar');
+
+-- Pokémon 4: Charmander
+INSERT INTO pokemon (nombre, tipo) VALUES ('Charmander', 'Fuego');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (4, 'Arañazo');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (4, 'Ascuas');
+
+-- Pokémon 5: Charmeleon
+INSERT INTO pokemon (nombre, tipo) VALUES ('Charmeleon', 'Fuego');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (5, 'Arañazo');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (5, 'Ascuas');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (5, 'Lanzallamas');
+
+-- Pokémon 6: Charizard
+INSERT INTO pokemon (nombre, tipo) VALUES ('Charizard', 'Fuego/Volador');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (6, 'Arañazo');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (6, 'Ascuas');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (6, 'Lanzallamas');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (6, 'Vuelo');
+
+-- Pokémon 7: Squirtle
+INSERT INTO pokemon (nombre, tipo) VALUES ('Squirtle', 'Agua');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (7, 'Placaje');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (7, 'Pistola agua');
+
+-- Pokémon 8: Wartortle
+INSERT INTO pokemon (nombre, tipo) VALUES ('Wartortle', 'Agua');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (8, 'Placaje');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (8, 'Pistola agua');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (8, 'Hidrobomba');
+
+-- Pokémon 9: Blastoise
+INSERT INTO pokemon (nombre, tipo) VALUES ('Blastoise', 'Agua');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (9, 'Placaje');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (9, 'Pistola agua');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (9, 'Hidrobomba');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (9, 'Hidrocañón');
+
+-- Pokémon 10: Caterpie
+INSERT INTO pokemon (nombre, tipo) VALUES ('Caterpie', 'Bicho');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (10, 'Placaje');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (10, 'Cuerda floja');
+
+-- Pokémon 11: Metapod
+INSERT INTO pokemon (nombre, tipo) VALUES ('Metapod', 'Bicho');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (11, 'Placaje');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (11, 'Endurecer');
+
+-- Pokémon 12: Butterfree
+INSERT INTO pokemon (nombre, tipo) VALUES ('Butterfree', 'Bicho/Volador');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (12, 'Polvo veneno');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (12, 'Confusión');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (12, 'Ataque ala');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (12, 'Psíquico');
+
+-- Pokémon 13: Weedle
+INSERT INTO pokemon (nombre, tipo) VALUES ('Weedle', 'Bicho/Veneno');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (13, 'Picotazo venenoso');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (13, 'Cuerda floja');
+
+-- Pokémon 14: Kakuna
+INSERT INTO pokemon (nombre, tipo) VALUES ('Kakuna', 'Bicho/Veneno');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (14, 'Picotazo venenoso');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (14, 'Endurecer');
+
+-- Pokémon 15: Beedrill
+INSERT INTO pokemon (nombre, tipo) VALUES ('Beedrill', 'Bicho/Veneno');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (15, 'Picotazo venenoso');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (15, 'Ataque furia');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (15, 'Agilidad');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (15, 'Tóxico');
+
+-- Pokémon 16: Pidgey
+INSERT INTO pokemon (nombre, tipo) VALUES ('Pidgey', 'Normal/Volador');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (16, 'Placaje');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (16, 'Ataque rápido');
+
+-- Pokémon 17: Pidgeotto
+INSERT INTO pokemon (nombre, tipo) VALUES ('Pidgeotto', 'Normal/Volador');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (17, 'Placaje');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (17, 'Ataque rápido');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (17, 'Vuelo');
+
+-- Pokémon 18: Pidgeot
+INSERT INTO pokemon (nombre, tipo) VALUES ('Pidgeot', 'Normal/Volador');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (18, 'Placaje');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (18, 'Ataque rápido');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (18, 'Vuelo');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (18, 'Golpe aéreo');
+
+-- Pokémon 19: Rattata
+INSERT INTO pokemon (nombre, tipo) VALUES ('Rattata', 'Normal');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (19, 'Placaje');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (19, 'Mordisco');
+
+-- Pokémon 20: Raticate
+INSERT INTO pokemon (nombre, tipo) VALUES ('Raticate', 'Normal');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (20, 'Placaje');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (20, 'Mordisco');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (20, 'Hipercolmillo');
+
+-- Pokémon 21: Spearow
+INSERT INTO pokemon (nombre, tipo) VALUES ('Spearow', 'Normal/Volador');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (21, 'Placaje');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (21, 'Picotazo');
+
+-- Pokémon 22: Fearow
+INSERT INTO pokemon (nombre, tipo) VALUES ('Fearow', 'Normal/Volador');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (22, 'Placaje');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (22, 'Picotazo');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (22, 'Ataque ala');
+
+-- Pokémon 23: Ekans
+INSERT INTO pokemon (nombre, tipo) VALUES ('Ekans', 'Veneno');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (23, 'Placaje');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (23, 'Mordisco');
+
+-- Pokémon 24: Arbok
+INSERT INTO pokemon (nombre, tipo) VALUES ('Arbok', 'Veneno');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (24, 'Placaje');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (24, 'Mordisco');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (24, 'Cola veneno');
+
+-- Pokémon 25: Pikachu
+INSERT INTO pokemon (nombre, tipo) VALUES ('Pikachu', 'Eléctrico');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (25, 'Placaje');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (25, 'Impactrueno');
+INSERT INTO ataque (pokemon_id, nombre) VALUES (25, 'Rayo');

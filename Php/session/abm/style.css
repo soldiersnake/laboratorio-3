@@ -1,0 +1,337 @@
+html,
+body {
+  width: 100vw;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  color: yellow;
+}
+
+#contenedor {
+  width: 100%;
+  height: 100%;
+  background-image: url("./imagenes/fondoPokemon.png");
+  background-size: cover;
+  background-position: center;
+}
+
+table {
+  /* display: block; */
+  display: table;
+  height: 100%;
+  width: 100vw;
+  border-collapse: collapse;
+  overflow: auto;
+}
+
+header,
+footer {
+  font-weight: bold;
+  background-color: black;
+  height: 10%;
+  width: 100%;
+  color: white;
+  padding: 30px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.th {
+  text-align: center;
+  background-color: rgba(255, 0, 0, 0.774);
+  padding: 10px 10px 25px 10px;
+  box-sizing: border-box;
+  border-right: 2px solid orange;
+  cursor: pointer;
+}
+
+[campo-dato="id"] {
+  width: 10vw;
+}
+
+[campo-dato="marca"] {
+  width: 30vw;
+}
+
+[campo-dato="modelo"] {
+  width: 30vw;
+}
+
+[campo-dato="precio"] {
+  width: 20vw;
+}
+
+/* [campo-dato = "año"]
+        {
+            width: 10vw;
+        } */
+
+/* [campo-dato = "deporte"]
+        {
+            width: 20vw;
+            color: darkslateblue;
+            font-weight: bold;
+        } */
+
+tbody tr:nth-child(odd) {
+  background-color: rgb(220, 227, 126);
+}
+
+tbody tr:nth-child(even) {
+  background-color: rgb(229, 102, 79);
+}
+
+td {
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.marginIzquierdo {
+  margin-right: 20px;
+}
+
+@media (max-width: 900px) {
+  /* [campo-dato = "año"]
+            {
+                display: none;
+            } */
+
+  [campo-dato="precio"] {
+    width: 35vw;
+  }
+}
+
+@media (max-width: 600px) {
+  [campo-dato="precio"] {
+    display: none;
+  }
+
+  [campo-dato="modelo"] {
+    width: 60vw;
+  }
+}
+
+/* @media (max-width: 600px)
+        {
+            [campo-dato = "precio"]
+            {
+                display: none;
+            }
+
+            [campo-dato = "deporte"]
+            {
+                width: 85vw;
+            }
+        } */
+
+.btnHeader {
+  border-radius: 15px;
+  background-color: white;
+  font-weight: bold;
+}
+
+.btnHeader:hover {
+  cursor: pointer;
+  background-color: black;
+  color: yellow;
+  border: 4px solid yellow;
+}
+
+#botones {
+  position: fixed;
+  right: 20px;
+}
+
+#botones button {
+  padding: 10px;
+  width: 100px;
+  font-weight: bold;
+}
+
+/* ////////////////////////// */
+
+h3 {
+  margin: 0;
+}
+
+
+#titulo {
+  background-color: black;
+  color: white;
+  height: 10%;
+  width: 100%;
+  padding-left: 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.opcion {
+  float: left;
+  height: 30%;
+  width: 50%;
+}
+
+thead {
+  width: 100%;
+}
+
+thead input {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+button {
+  padding: 5px;
+}
+
+/* VENTANA MODAL */
+.VentanaModal {
+  width: 35%;
+  height: 57%;
+  overflow: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url("./imagenes/pokebola.png");
+  background-size: cover;
+  background-position: center;
+  z-index: 999;
+  display: none;
+}
+.VentanaModal h3{
+    text-align: center;
+    color: yellow;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+.headerVentanaModal {
+  height: 10%;
+  background-color: rgba(255, 0, 0, 0.648);
+}
+.footerVentanaModal {
+  height: 15%;
+  text-align: center;
+  /* background-color: rgba(255, 0, 0, 0.774); */
+}
+.alta {
+  background-color: blue;
+  border-radius: 15px;
+  padding: 3px;
+  margin: 3px;
+}
+.alta:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+.formulario {
+  background-color: rgba(212, 230, 153, 0.853);
+  height: 70%;
+  overflow: auto;
+}
+.modal-open {
+  pointer-events: none;
+  /* opacity: 0.3; */
+}
+.container.modal-open {
+  pointer-events: none;
+  opacity: 0.3;
+}
+.formulario-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 65%;
+  /* background-color: rgba(212, 230, 153, 0.853); */
+}
+.inputsForm input {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.inputsForm select {
+  width: 280px;
+  border-radius: 15px;
+}
+
+.inputsForm label {
+  display: block;
+  margin-bottom: 5px;
+  margin-top: 5%;
+}
+
+.inputsForm input:hover {
+  background-color: beige;
+}
+
+.btnForm {
+  margin-top: 4%;
+  border-radius: 15px;
+  width: 100%;
+  background-color: white;
+  color: blue;
+}
+.btnForm:hover {
+  cursor: pointer;
+  background-color: aqua;
+  color: aliceblue;
+  border: 2px blue solid;
+}
+.btnCerrarModal {
+  background-color: red;
+  border: 2px solid black;
+  width: 5%;
+  padding: 15px;
+  color: black;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
+  border: none;
+  border-radius: 0 0 0 20px;
+}
+.btnCerrarModal:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+.modal-open {
+  pointer-events: none;
+  /* opacity: 0.3; */
+}
+.container.modal-open {
+  pointer-events: none;
+  opacity: 0.3;
+}
+.VentanaModal {
+  pointer-events: auto;
+  opacity: 1;
+  border-radius: 20px;
+  border: 3px solid black;
+}
+.mostrar {
+  opacity: 1;
+}
+#contenedor.modal-open {
+  pointer-events: none;
+  opacity: 0.3;
+}
