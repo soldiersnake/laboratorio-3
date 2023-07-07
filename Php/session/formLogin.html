@@ -27,7 +27,7 @@
     body {
         width: 100%;
         height: 100%;
-        background-image: url("/Php/abm/imagenes/fondoPokemon.png");
+        background-image: url("./fondoPokemon.png");
         background-size: cover;
         background-position: center;
     }
@@ -43,30 +43,24 @@
     form{
         background-color: rgba(255, 255, 255, 0.60);
         border-radius: 20px;
-        border: 5px solid rgba(255, 255, 0, 0.477);
+        border: 5px solid rgba(32, 32, 5, 0.477);
     }
 </style>
 
 <body>
     <div class="contenedor">
-        <form>
+        <form action="./ingresoSistema.php" method="post">
             <div class="mb-3 p-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+                <label for="login" class="form-label">Usuario</label>
+                <input type="txt" class="form-control" id="login" name="login" aria-describedby="emailHelp">
                 <div id="emailHelp" class="form-text">Nunca compartiremos tu Email con nadie más.</div>
             </div>
             <div class="mb-3 p-3">
                 <label for="password" class="form-label">Contraseña</label>
                 <input type="password" class="form-control" id="password" name="password">
             </div>
-            <!-- <div class="mb-3 p-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div> -->
             <button type="submit" class="btn btn-primary m-3">Submit</button>
         </form>
     </div>
-
 </body>
-
 </html>

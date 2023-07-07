@@ -20,6 +20,7 @@
                 <button class="btnHeader" id="vaciar">Vaciar</button>
                 <button class="btnHeader" id="limpiarFiltros">Limpiar</button>
                 <button class="btnHeader" id="alta">Alta</button>
+                <button class="btnHeader" id="cerrarSesion">Cerrar Sesion</button>
             </div>
         </header>
         <table>
@@ -153,7 +154,7 @@
 </body>
 
 </html>
-<script src="../jquery.js"></script>
+<script src="../../jquery.js"></script>
 <script>
 
     var flag = 0;
@@ -448,5 +449,12 @@
         // Disparar el evento clic del botón "Cargar"
         $("#cargar").trigger("click");
     }
+
+    // CERRAR SESSION
+    $(document).ready(()=>{
+        $('#cerrarSesion').click(()=>{
+            location.href = "../destruirSesion.php"
+        })
+    })
 
 </script>
