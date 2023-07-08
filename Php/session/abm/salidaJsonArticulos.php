@@ -1,4 +1,5 @@
 <?php
+include './manejoSesion.inc';
 include 'datosConexionBase.php';
 
 $sql = "SELECT * FROM pokemon";

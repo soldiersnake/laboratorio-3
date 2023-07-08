@@ -1,4 +1,6 @@
 <?php
+include './manejoSesion.inc';
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -26,9 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     mysqli_stmt_bind_param($stmt, 'ssssb', $nombre, $tipo, $ataque, $debilidad, $pdfBlob);
 
     if (mysqli_stmt_execute($stmt)) {
-        echo "Registro insertado correctamente";
+        echo "alert('Se inserto correctamente los datos desde alerta')";
         // Redireccionar a index.html
-        header("Location: index.html");
+        header("Location: index.php");
         exit();
     } else {
         echo "Error al insertar el registro: " . mysqli_error($conexion);

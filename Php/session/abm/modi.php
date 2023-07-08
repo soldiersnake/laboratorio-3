@@ -1,4 +1,5 @@
 <?php
+include './manejoSesion.inc';
 include 'datosConexionBase.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

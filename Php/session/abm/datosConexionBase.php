@@ -1,4 +1,5 @@
 <?php
+
 $host = "b8fabxioa1cltwnfexul-mysql.services.clever-cloud.com";
 $dbname = "b8fabxioa1cltwnfexul";
 $user = "uioe69jvjh86fatw";
