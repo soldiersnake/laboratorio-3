@@ -19,7 +19,6 @@
             <h2>ABM form's - Pokemon</h2>
             <div id="botones">
 
-                <!-- <input type="text" readonly id="orden" value="Precio"> -->
                 <button class="btnHeader" id="cargar">Cargar</button>
                 <button class="btnHeader" id="vaciar">Vaciar</button>
                 <button class="btnHeader" id="limpiarFiltros">Limpiar</button>
@@ -71,6 +70,7 @@
             <button class="btnCerrarModal">X</button>
         </div>
         <div class="formulario-modal">
+            <!-- FORM ALTA -->
             <form action="alta.php" method="post" id="myForm" enctype="multipart/form-data">
                 <div class="inputsForm">
                     <label for="nombre">Nombre:</label>
@@ -92,14 +92,13 @@
                 </div>
                 <div class="inputsForm" style="margin-top: 1%;">
                     <label for="pdf">Imagen:</label>
-                    <input type="file" id="pdfInput" name="pdf" accept=".pdf">
+                    <input type="file" id="pdf" name="pdf" accept=".pdf">
                 </div>
-
-
-                <button class="btnForm" type="submit" id="btnEnviar" onclick="altaPokemon(event)">
+                <button class="btnForm" type="submit">
                     Enviar
                 </button>
             </form>
+
         </div>
     </div>
 
@@ -146,8 +145,8 @@
             <h3 class="itemMid">Iframe de PDF</h3>
             <button class="btnCerrarModal">X</button>
         </div>
-        <div class="formulario-modal">
-            <iframe src="" frameborder="0"></iframe>
+        <div class="formulario-modal2">
+
             <button class="cerrarIframe">
                 CERRAR
             </button>
@@ -296,15 +295,12 @@
 
         // ALTA CRUD
         $("#myForm").submit((event) => {
-            event.preventDefault(); // Evita que el formulario se envíe automáticamente
-
+            event.preventDefault();
+            console.log(event);
+            console.log('mensaje prueba');
             // Construye el mensaje de confirmación
             const mensaje = `¿Deseas cargar los siguientes datos?`;
-
-            // Muestra la confirmación y procesa la respuesta
             if (confirm(mensaje)) {
-                // El usuario hizo clic en "Aceptar"
-                // Envía el formulario para realizar el alta en la base de datos
                 const data = new FormData($('#myForm')[0]);
                 $.ajax({
                     type: 'POST',
@@ -317,7 +313,7 @@
                     data: data,
                     success: (respuestaServer, estado) => {
                         console.log(respuestaServer);
-                        window.location.href = "index.html";
+                        // window.location.href = "index.php";
                     }
                 });
             } else {
@@ -367,17 +363,30 @@
         flag = 0;
     });
     function btnPDF(e) {
-    // Obtén los datos del pokemon
-    const pokemon = JSON.parse(e.target.dataset.pokemon);
+    // Obtén el elemento que recibió el clic (el botón)
+    const boton = e.target;
+    // Obtén los datos del pokemon del atributo "data-pokemon" del botón
+    const pokemon = JSON.parse(boton.dataset.pokemon);
+    // Obtén el ID del pokemon
+    const id = pokemon.id;
+    console.log(id);
 
     $.ajax({
         type: "GET",
         url: "./verPdf.php",
-        data: { id: pokemon.id },
+        data: { id: id },
         success: function(respuestaServer) {
             const objetoDato = JSON.parse(respuestaServer);
+            const documentoPDF = objetoDato.documentoPDF;
+            console.log(documentoPDF);
+
             $("#modalIframe").show();
-            $("#modalIframe iframe").attr('src', 'data:application/pdf;base64,' + objetoDato.documentoPDF);
+           // Insertar el iframe en la clase formulario-modal2
+           // Crear el iframe y establecer los atributos
+           const iframeHTML = "<iframe width='100%' height='800px' src='data:application/pdf;base64," + documentoPDF + "'></iframe>";
+
+            // Insertar el iframe en la clase formulario-modal2
+            $('.formulario-modal2').html(iframeHTML);
             // Abre la ventana modal
             $("#contenedor").addClass("modal-open");
             $("#modalIframe").addClass('mostrar');

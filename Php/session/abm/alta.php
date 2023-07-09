@@ -1,40 +1,68 @@
 <?php
 include './manejoSesion.inc';
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-include 'datosConexionBase.php';
+$host = "b8fabxioa1cltwnfexul-mysql.services.clever-cloud.com";
+$dbname = "b8fabxioa1cltwnfexul";
+$user = "uioe69jvjh86fatw";
+$password = "Rcev4FvTQSGVrwP6R3ht";
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+try {
+    $dsn = "mysql:host=$host;dbname=$dbname";
+    $dbh = new PDO($dsn, $user, $password);
+
     $nombre = $_POST['nombre'];
     $tipo = $_POST['tipo'];
-    $ataque = $_POST['ataque'];
+    $ataque_principal = $_POST['ataque'];
     $debilidad = $_POST['debilidad'];
-    
-    $pdfBlob = NULL;
-    if (isset($_FILES['pdf'])) {
-        $tmpName = $_FILES['pdf']['tmp_name'];
-        $pdfBlob = file_get_contents($tmpName);
-    }
 
-    $sql = "INSERT INTO pokemon (nombre, tipo, ataque_principal, debilidad, pdf) VALUES (?, ?, ?, ?, ?)";
-    $stmt = mysqli_prepare($conexion, $sql);
+    $respuesta_estado = '';
 
-    if ($stmt === false) {
-        die('Error al preparar la declaración: ' . mysqli_error($conexion));
-    }
-    
-    mysqli_stmt_bind_param($stmt, 'ssssb', $nombre, $tipo, $ataque, $debilidad, $pdfBlob);
+    $respuesta_estado = $respuesta_estado . "Entradas recibidas en el req http: \$nombre: $nombre, \$tipo: $tipo, \$ataque_principal: $ataque_principal, \$debilidad: $debilidad\n\nConexión exitosa.";
 
-    if (mysqli_stmt_execute($stmt)) {
-        echo "alert('Se inserto correctamente los datos desde alerta')";
-        // Redireccionar a index.html
-        header("Location: index.php");
-        exit();
+    $sql = "INSERT INTO pokemon (nombre, tipo, ataque_principal, debilidad) VALUES (:nombre, :tipo, :ataque_principal, :debilidad)";
+    $stmt = $dbh->prepare($sql);
+    $respuesta_estado = $respuesta_estado . "\nPreparación exitosa.";
+
+    $stmt->bindParam(":nombre", $nombre);
+    $stmt->bindParam(":tipo", $tipo);
+    $stmt->bindParam(":ataque_principal", $ataque_principal);
+    $stmt->bindParam(":debilidad", $debilidad);
+
+    $stmt->execute();
+
+    $id = $dbh->lastInsertId();
+
+
+    if (!isset($_FILES["pdf"])) {
+        $respuesta_estado .= "\nNo se inicializó la variable FILES";
     } else {
-        echo "Error al insertar el registro: " . mysqli_error($conexion);
+        if (empty($_FILES["pdf"]["name"])) {
+            $respuesta_estado .= "\nNo se ha seleccionado ningún archivo para enviar.";
+        } else {
+            if (!is_uploaded_file($_FILES["pdf"]["tmp_name"])) {
+                $respuesta_estado .= "\nError al cargar el archivo.";
+            } else {
+                $respuesta_estado .= "\nBuscando documento asociado al código de artículo $id";
+                $pdf = file_get_contents($_FILES["pdf"]["tmp_name"]);
+                $pdfEncoded = base64_encode($pdf);
+
+                $sql = "UPDATE pokemon SET pdf = :pdf WHERE id = :id";
+                $stmt = $dbh->prepare($sql);
+
+                $stmt->bindParam(":pdf", $pdfEncoded);
+                $stmt->bindParam(":id", $id);
+
+                $stmt->execute();
+                $respuesta_estado .= "\nPDF cargado";
+            }
+        }
     }
+
+    $dbh = null;
+    $respuesta_estado = $respuesta_estado . "\nEjecución exitosa.";
+    echo $respuesta_estado;
+} catch (PDOException $e) {
+    $respuesta_estado = $respuesta_estado . "\nERROR: \n" . $e->getMessage();
+    echo $respuesta_estado;
 }
-mysqli_close($conexion);
 ?>

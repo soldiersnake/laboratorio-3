@@ -263,6 +263,14 @@ button {
   height: 65%;
   /* background-color: rgba(212, 230, 153, 0.853); */
 }
+.formulario-modal2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 65%;
+  /* background-color: rgba(212, 230, 153, 0.853); */
+}
 .inputsForm input {
   width: 100%;
   border-radius: 15px;
